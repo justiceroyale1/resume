@@ -74,7 +74,7 @@ const experienceList = [
         tasks: [
             'Implemented the UI design for all outer pages',
             'Built features around contract agreements',
-            'Built features around property search',
+            'Built features around property search and rental or purchase',
             'Built features around user verification',
         ],
     },
