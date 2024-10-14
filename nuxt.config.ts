@@ -41,6 +41,7 @@ export default defineNuxtConfig({
         { children: 'JavaScript is required' }
       ]
     }
-  }
+  },
+  ssr: true
 
 })

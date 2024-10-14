@@ -13,6 +13,7 @@ const {
   position,
   skills,
   educationList,
+  experienceList,
 } = useHelpers();
 
 const { smAndUp } = useDisplay();
@@ -81,43 +82,7 @@ const contacts = computed(() => {
 
     <v-container class="mt-15">
       <v-row>
-        <v-col cols="4" class="pa-0 d-none d-md-block">
-          <!-- <v-row>
-            <v-col class="px-0" cols="12">
-              <v-icon> mdi-phone-classic </v-icon>
-              <span class="ml-3">
-                <a class="text-decoration-none" :href="`tel:${email}`">
-                  {{ phoneNumber }}
-                </a>
-              </span>
-            </v-col>
-            <v-col class="px-0" cols="12">
-              <v-icon> mdi-email </v-icon>
-              <span class="ml-3">
-                <a class="text-decoration-none" :href="`mailto:${email}`">
-                  {{ email }}
-                </a>
-              </span>
-            </v-col>
-            <v-col class="px-0" cols="12">
-              <v-icon> mdi-map-marker </v-icon>
-              <span class="ml-3">
-                {{ address }}
-              </span>
-            </v-col>
-          </v-row>
-          <v-divider class="my-4"> </v-divider>
-          <v-row>
-            <v-col class="px-0" cols="12">
-              <h5 class="text-h5 text-uppercase font-weight-bold">Skills</h5>
-              <v-icon> mdi-phone-classic </v-icon>
-              <span class="ml-3">
-                <a class="text-decoration-none" :href="`tel:${email}`">
-                  {{ phoneNumber }}
-                </a>
-              </span>
-            </v-col>
-          </v-row> -->
+        <v-col cols="3" class="pa-0 d-none d-md-block">
           <v-list slim>
             <v-list-subheader
               class="px-0 text-h5 text-uppercase font-weight-bold"
@@ -127,10 +92,13 @@ const contacts = computed(() => {
 
             <v-list-item class="px-0" v-for="(contact, i) in contacts" :key="i">
               <template v-slot:prepend>
-                <v-icon :icon="contact.icon"></v-icon>
+                <v-icon :icon="contact.icon" size="sm"></v-icon>
               </template>
 
-              <v-list-item-title v-text="contact.text"></v-list-item-title>
+              <v-list-item-title
+                v-text="contact.text"
+                class="text-wrap"
+              ></v-list-item-title>
             </v-list-item>
           </v-list>
 
@@ -205,6 +173,9 @@ const contacts = computed(() => {
               </p>
             </v-col>
           </v-row>
+
+          <v-divider class="my-4"> </v-divider>
+
           <v-row class="d-block d-md-none">
             <v-col cols="12">
               <h5 class="text-h5 text-uppercase font-weight-bold">Skills</h5>
@@ -213,6 +184,71 @@ const contacts = computed(() => {
                   {{ skill }}
                 </v-chip>
               </v-chip-group>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col cols="12">
+              <h5 class="text-h5 text-uppercase font-weight-bold">
+                Experience
+              </h5>
+              <div v-for="(experience, i) in experienceList" :key="i">
+                <v-list lines="two" class="pb-0">
+                  <v-list-item>
+                    <v-list-item-title
+                      class="d-flex justify-space-between py-2"
+                    >
+                      <div>
+                        <span class="font-weight-bold">Position:</span>
+                        {{ experience.position }}
+                      </div>
+                      <div>
+                        <span class="font-weight-bold">Duration:</span>
+                        {{ experience.duration }}
+                      </div>
+                    </v-list-item-title>
+                    <v-list-item-subtitle
+                      class="d-flex justify-space-between pt-2"
+                    >
+                      <div>
+                        <span class="font-weight-bold">Company:</span>
+                        {{ experience.company }}
+
+                        <a
+                          v-if="experience.website"
+                          :href="experience.website"
+                          target="_blank"
+                        >
+                          <v-icon> mdi-web </v-icon>
+                        </a>
+                      </div>
+                      <div>
+                        <span class="font-weight-bold">
+                          Termination Reason:
+                        </span>
+                        {{ experience.terminationReason }}
+                      </div>
+                    </v-list-item-subtitle>
+                  </v-list-item>
+                </v-list>
+                <v-list slim>
+                  <v-list-item v-for="task in experience.tasks" :key="task">
+                    <template v-slot:prepend>
+                      <v-icon icon="mdi-circle" size="sm"></v-icon>
+                    </template>
+                    <v-list-item-title
+                      v-text="task"
+                      class="text-wrap"
+                    ></v-list-item-title>
+                  </v-list-item>
+                </v-list>
+
+                <v-divider
+                  :class="[i % 2 > 0 ? 'experience-print-divider' : '', 'my-4']"
+                  v-if="i >= 0 && i < experienceList.length - 1"
+                >
+                </v-divider>
+              </div>
             </v-col>
           </v-row>
         </v-col>
@@ -226,6 +262,10 @@ const contacts = computed(() => {
   v-sheet {
     overflow: auto;
     height: auto;
+  }
+
+  .experience-print-divider {
+    page-break-after: always;
   }
 }
 </style>
