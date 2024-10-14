@@ -85,7 +85,7 @@ const experienceList = [
         duration: '04/2019 - 07/2020',
         terminationReason: 'Covid 19 Pandemic',
         tasks: [
-            'Built an on-premise inventory managment system for Federal Judiciary Service Commission (FJSC)',
+            'Built an on-premise inventory management system for the Federal Judiciary Service Commission (FJSC)',
             "Built features around report cards for SchoolShell (the company's flagship product)",
             'Fixed critical bugs that improved performance',
             'Built features around students admission',
