@@ -168,7 +168,7 @@ const contacts = computed(() => {
           <v-row class="mt-n3">
             <v-col cols="12">
               <h5 class="text-h5 text-uppercase font-weight-bold">Summary</h5>
-              <p>
+              <p class="py-2">
                 {{ summary }}
               </p>
             </v-col>
@@ -231,6 +231,9 @@ const contacts = computed(() => {
                     </v-list-item-subtitle>
                   </v-list-item>
                 </v-list>
+                <p v-if="experience.description" class="py-2 px-4">
+                  {{ experience.description }}
+                </p>
                 <v-list slim>
                   <v-list-item v-for="task in experience.tasks" :key="task">
                     <template v-slot:prepend>

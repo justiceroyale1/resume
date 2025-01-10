@@ -25,8 +25,8 @@ const skills = [
     'Veutify',
     'Docker',
     'MySQL',
-    'Tailwind',
-    'Bootstrap'
+    'TailwindCSS',
+    'BootstrapCSS'
 ]
 
 const educationList = [
@@ -43,6 +43,7 @@ const experienceList = [
         website: 'https://www.newavenuehomes.com/',
         duration: '11/2023 - 02/2024',
         terminationReason: 'Contract Completed',
+        description: "Hundreds of happy clients have hired New Avenue Homes to design, permit, and build an accessory dwelling unit (ADU). They specialize in detached ADUs, attached ADUs, basement conversions, house lifts, junior ADUs, studios, SB-9 subdivisions, custom homes, and family complexes.",
         tasks: [
             'Fixed bugs on invoicing',
             'Built additional features around payments',
@@ -56,6 +57,7 @@ const experienceList = [
         website: '',
         duration: '01/2021 - 09/2023',
         terminationReason: 'Company ran out of funding',
+        description: "XRadar360 set out to build a platform that enabled project owners to remotely start, track, and complete a construction project anywhere in the world. Unfortunately, the company ran out funds and had to shut down.",
         tasks: [
             'Took over a legacy codebase and built out all remaining features',
             'Built features around construction project monitoring based on geo-tagged media',
@@ -71,6 +73,7 @@ const experienceList = [
         website: 'https://truelandlord.com/',
         duration: '03/2022 - 10/2022',
         terminationReason: 'Contract Completed',
+        description: "Truelandlord is a platform that leverages software to remove impediments to trust, communication, and transactions between agents, tenants, and landlords.",
         tasks: [
             'Implemented the UI design for all outer pages',
             'Built features around contract agreements',
@@ -84,6 +87,7 @@ const experienceList = [
         website: 'https://schoolshell.com/',
         duration: '04/2019 - 07/2020',
         terminationReason: 'Covid 19 Pandemic',
+        description: "SchoolShell is an holistic educational app that enhances learning for students, facilitate school administration as the best school management software for schools and keeps parents in the loop of their wards learning process.",
         tasks: [
             'Built an on-premise inventory management system for the Federal Judiciary Service Commission (FJSC)',
             "Built features around report cards for SchoolShell (the company's flagship product)",
