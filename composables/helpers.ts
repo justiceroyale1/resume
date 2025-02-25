@@ -14,19 +14,23 @@ const skills = [
     'Front End Development',
     'Back End Development',
     'API Development',
+    'Database Design',
+    'Automated Tests',
     'PHP',
     'Laravel',
     'CodeIgniter',
     'Javascript',
     'Typescript',
     'Nodejs',
+    'React',
     'Vuejs',
     'Nuxtjs',
     'Veutify',
     'Docker',
     'MySQL',
     'TailwindCSS',
-    'BootstrapCSS'
+    'BootstrapCSS',
+    'Git'
 ]
 
 const educationList = [
