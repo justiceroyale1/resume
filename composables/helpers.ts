@@ -43,6 +43,21 @@ const educationList = [
 const experienceList = [
     {
         position: 'Fullstack Developer',
+        company: 'Coamana - Abuja, Nigeria',
+        website: 'https://www.coamana.com/',
+        duration: '11/2024 - Present',
+        current: true,
+        terminationReason: 'Currently working',
+        description: "Coamana is a Technology Company that is evolving market hubs and systems with the goal of optimum impact on people, trade, and environment",
+        tasks: [
+            'Built features around orders',
+            'Built features around enterprise market',
+            'Built features around market verification and credit allocation',
+            'Built features around call-centre assisted transactions and repayments'
+        ],
+    },
+    {
+        position: 'Fullstack Developer',
         company: 'New Avenue - New York, USA',
         website: 'https://www.newavenuehomes.com/',
         duration: '11/2023 - 02/2024',

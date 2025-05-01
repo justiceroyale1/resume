@@ -222,7 +222,12 @@ const contacts = computed(() => {
                           <v-icon> mdi-web </v-icon>
                         </a>
                       </div>
-                      <div>
+                      <div v-if="experience.current">
+                        <span class="font-weight-bold">
+                          Currently working
+                        </span>
+                      </div>
+                      <div v-else>
                         <span class="font-weight-bold">
                           Termination Reason:
                         </span>
