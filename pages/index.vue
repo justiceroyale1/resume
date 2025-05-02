@@ -3,9 +3,9 @@ useSeoMeta({
   title: "Justice Abutu - Fullstack Developer",
   ogTitle: "Justice Abutu - Fullstack Developer",
   description:
-    "Justice Abutu is a fullstack developer. He is skilled in PHP, Laravel, Javascript, Typescript, Nodejs, Vue, etc. He has years of experience building web apps for various companies. Learn more about his experience here. ",
+    "Justice Abutu is a fullstack developer. He is skilled in PHP, Laravel, Javascript, Typescript, Nodejs, Vue, etc. He has over 5 years of experience building web apps for various companies. Learn more about his experience here. ",
   ogDescription:
-    "Justice Abutu is a fullstack developer. He is skilled in PHP, Laravel, Javascript, Typescript, Nodejs, Vue, etc. He has years of experience building web apps for various companies. Learn more about his experience here. ",
+    "Justice Abutu is a fullstack developer. He is skilled in PHP, Laravel, Javascript, Typescript, Nodejs, Vue, etc. He has over 5 years of experience building web apps for various companies. Learn more about his experience here. ",
   ogImage: "images/profile.jpg",
   twitterCard: "summary_large_image",
 });
@@ -13,7 +13,7 @@ useSeoMeta({
 <template>
   <v-app>
     <v-main>
-      <Resume></Resume>
+      <AtsResume></AtsResume>
     </v-main>
   </v-app>
 </template>
