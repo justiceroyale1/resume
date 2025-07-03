@@ -50,9 +50,9 @@ const experienceList = [
         description: "Leading the development of a comprehensive marketplace platform that revolutionizes trade and commerce in emerging markets. Spearheading the implementation of advanced features and ensuring system scalability.",
         tasks: [
             'Architected and implemented a robust order management system, that reduced processing time by 40%',
-            'Developed enterprise market features supporting 10,000+ concurrent users with 99.9% uptime',
-            'Implemented secure market verification system and credit allocation engine, that reduced fraud by 60%',
-            'Engineered call-center assisted transaction system handling 500+ daily transactions',
+            'Developed enterprise market features supporting 100+ concurrent users with 99.9% uptime',
+            'Implemented secure market verification system and credit allocation engine',
+            'Engineered call-center assisted transaction system handling 50+ daily transactions',
             'Optimized database queries and implemented caching strategies, that improved response time by 35%'
         ],
     },
@@ -79,11 +79,11 @@ const experienceList = [
         terminationReason: 'Company ran out of funding',
         description: "Led the development of a groundbreaking construction project management platform enabling remote project monitoring and management.",
         tasks: [
-            'Architected and implemented microservices-based system handling 1000+ concurrent projects',
+            'Architected and implemented microservices-based system handling 100+ concurrent projects',
             'Developed real-time geo-tagged media processing system with 99.9% accuracy',
-            'Built secure bidding and contract management system processing $5M+ in transactions',
+            'Built secure bidding and contract management system',
             'Implemented escrow payment system with multi-currency support and automated dispute resolution',
-            'Integrated multiple payment processors and developed wallet system with fraud detection'
+            'Integrated multiple payment processors and developed wallet system'
         ],
     },
     {
@@ -110,7 +110,7 @@ const experienceList = [
         description: "Developed comprehensive educational management system serving multiple institutions with features for students, administrators, and parents.",
         tasks: [
             'Built inventory management system for Federal Judiciary Service Commission, that reduced stock discrepancies by 90%',
-            'Developed automated report card generation system processing 10,000+ records daily',
+            'Developed automated report card generation system',
             'Implemented performance optimization, that reduced system response time by 70%',
             'Built comprehensive student admission system with document verification',
             'Developed real-time notification system for parent-teacher communication'

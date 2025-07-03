@@ -17,7 +17,7 @@ const {
 const skillCategories = [
   {
     name: "Technologies & Frameworks",
-    skills: ["React.js", "Vue.js", "Node.js", "Express.js", "Laravel", "PHP", "TypeScript", "JavaScript", "MongoDB", "MySQL", "GraphQL", "Redux", "Vuex", "TailwindCSS", "Bootstrap"]
+    skills: ["React.js", "Vue.js", "Node.js", "Express.js", "Nuxt.js", "Adonis.js", "Laravel", "PHP", "TypeScript", "JavaScript", "MongoDB", "MySQL", "Vuex", "TailwindCSS", "Bootstrap", "CodeIgniter"]
   },
   {
     name: "Infrastructure & DevOps",
@@ -29,7 +29,7 @@ const skillCategories = [
   },
   {
     name: "Testing & Quality",
-    skills: ["Jest", "Mocha", "Cypress", "Unit Testing", "Integration Testing", "Test-Driven Development", "Code Quality Tools"]
+    skills: ["PHPUnit", "Unit Testing", "Integration Testing", "Test-Driven Development"]
   },
   {
     name: "Leadership & Technical Practices", 
