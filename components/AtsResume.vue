@@ -11,6 +11,8 @@ const {
   skills,
   educationList,
   experienceList,
+  linkedinUrl,
+  githubUrl,
 } = useAtsHelpers();
 
 // Organized skills by category for better customization per job application
@@ -51,7 +53,6 @@ const skillCategories = [
       <div class="mt-2 mb-4" style="font-size:1.05rem; max-width:800px; margin:auto;">
         {{ summary }}
       </div>
-      
       <!-- Professional Contact Information -->
       <div class="d-flex justify-center align-center flex-wrap mb-5" style="gap:32px; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; padding:12px 0;">
         <div class="d-flex align-center">
@@ -72,6 +73,21 @@ const skillCategories = [
             <div>
             <div class="text-caption text-grey-darken-2">Location</div>
             <span>{{ address }}</span>
+          </div>
+        </div>
+        <div class="d-flex align-center">
+            <div>
+            <div class="text-caption text-grey-darken-2">Professional Links</div>
+            <div class="d-flex align-center">
+              <a :href="linkedinUrl" target="_blank" class="text-decoration-none">
+                <v-icon color="primary" size="small">mdi-linkedin</v-icon>
+                <span class="ml-2">LinkedIn</span>
+              </a>
+              <a :href="githubUrl" target="_blank" class="text-decoration-none ml-2">
+                <v-icon color="#24292e" size="small">mdi-github</v-icon>
+                <span class="ml-2">GitHub</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

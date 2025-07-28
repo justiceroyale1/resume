@@ -1,13 +1,15 @@
-const summary = "Results-driven Full Stack Developer with 5+ years of experience in building scalable web applications and microservices. Proven track record of delivering high-performance solutions using modern technologies like Node.js, Vue.js, React, and Laravel. Strong expertise in RESTful API development, database optimization, and cloud infrastructure. Adept at leading development teams, implementing CI/CD pipelines, and driving technical excellence through code reviews and best practices."
+const summary = "Results-driven Full Stack Software Engineer with 5+ years of experience in building scalable web applications and microservices. Proven track record of delivering high-performance solutions using modern technologies like Node.js, Vue.js, React, and Laravel. Strong expertise in RESTful API development, database optimization, and cloud infrastructure. Adept at leading development teams, implementing CI/CD pipelines, and driving technical excellence through code reviews and best practices."
 
 const phoneNumber = "+2348130546010"
 const address = 'Abuja, Nigeria'
 const email = 'justiceroyale1@gmail.com'
-const position = 'Senior Full Stack Developer'
+const position = 'Senior Full Stack Software Engineer'
 const name = 'Justice Abutu'
+const linkedinUrl = 'https://www.linkedin.com/in/justice-abutu-royale/'
+const githubUrl = 'https://github.com/justicemax'
 
 const skills = [
-    'Full Stack Development',
+    'Full Stack Software Engineering',
     'RESTful API Design',
     'Microservices Architecture',
     'Cloud Infrastructure (AWS)',
@@ -35,7 +37,7 @@ const skills = [
 const educationList = [
     {
         title: 'Bachelor of Science in Computer Science',
-        subtitle: 'Federal University, Lafia, Nasarawa, Nigeria | 2014 - 2018'
+        subtitle: 'Federal University, Lafia, Nasarawa, Nigeria | 2013 - 2017'
     }
 ]
 
@@ -51,9 +53,29 @@ const experienceList = [
         tasks: [
             'Architected and implemented a robust order management system, that reduced processing time by 40%',
             'Developed enterprise market features supporting 100+ concurrent users with 99.9% uptime',
+            'Engineered call-center assisted transaction system which led to increase in customer usage by 30%',
             'Implemented secure market verification system and credit allocation engine',
-            'Engineered call-center assisted transaction system handling 50+ daily transactions',
-            'Optimized database queries and implemented caching strategies, that improved response time by 35%'
+            'Wrote feature-rich API endpoints for the frontend and backend',
+            'Wrote feature and unit tests for the backend',
+            'Collaborated with hybrid teams across Kenya and Nigeria'
+        ],
+    },
+    {
+        position: 'Senior Software Engineer',
+        company: 'KadMap - Abuja, Nigeria',
+        website: 'https://www.kadmap.com/',
+        duration: 'August 2024 - Present',
+        terminationReason: 'Currently working',
+        description: "KadMap’s all-in-one Central Office Computer gives you offline collaboration, secure local data control, cost-effective enterprise apps, and a forever-free office suite, with no internet or cloud required.",
+        tasks: [
+            'Built a custom SMTP server for the KadMap ecosystem',
+            'Built the KadMap Auth Service for the KadMap ecosystem',
+            'Built the KadMap Directory Service for the KadMap ecosystem',
+            'Built the KadMap Master Licensing Service for the KadMap ecosystem',
+            'Built the KadMap Connect App for the KadMap ecosystem',
+            'Provided technical support to the KadMap ecosystem',
+            'Implemented the backend for the KadMap Website',
+            'Customized open source software to fit the KadMap ecosystem',
         ],
     },
     {
@@ -64,11 +86,13 @@ const experienceList = [
         terminationReason: 'Contract Completed',
         description: "Contributed to the development of a comprehensive platform for accessory dwelling unit (ADU) management, serving hundreds of clients across the United States.",
         tasks: [
-            'Redesigned and optimized invoicing system, that reduced processing errors by 75%',
-            'Implemented secure payment processing system handling $2M+ in transactions',
-            'Developed automated scheduling system, that improved resource allocation by 50%',
+            'Redesigned and optimized invoicing system, that reduced processing errors by 35%',
+            'Fixed issues in the automated scheduling system, that improved resource allocation by 50%',
             'Built comprehensive budgeting module with real-time analytics and reporting',
-            'Integrated third-party APIs for property valuation and permit tracking'
+            'Integrated third-party APIs for custom email campaigns and payment systems',
+            'Learnt and worked with in-house frameworks and libraries to build the frontend and backend',
+            'Fixed other bugs and issues in the system',
+            'Collaborated with remote teams across the US and Nigeria'
         ],
     },
     {
@@ -83,7 +107,8 @@ const experienceList = [
             'Developed real-time geo-tagged media processing system with 99.9% accuracy',
             'Built secure bidding and contract management system',
             'Implemented escrow payment system with multi-currency support and automated dispute resolution',
-            'Integrated multiple payment processors and developed wallet system'
+            'Integrated multiple payment processors and developed wallet system',
+            'Collaborated with hybrid teams across the UK and Nigeria'
         ],
     },
     {
@@ -96,7 +121,7 @@ const experienceList = [
         tasks: [
             'Implemented responsive UI/UX design, achieving 95% user satisfaction rate',
             'Developed secure contract management system with digital signatures',
-            'Built advanced property search engine with AI-powered recommendations',
+            'Built advanced property search engine with integrated recommendations',
             'Implemented multi-factor authentication and identity verification system',
             'Optimized database queries, that reduced search response time by 60%'
         ],
@@ -105,7 +130,7 @@ const experienceList = [
         position: 'Full Stack Developer',
         company: 'SchoolShell - Abuja, Nigeria',
         website: 'https://schoolshell.com/',
-        duration: 'April 2019 - July 2020',
+        duration: 'April 2019 - August 2020',
         terminationReason: 'Covid 19 Pandemic',
         description: "Developed comprehensive educational management system serving multiple institutions with features for students, administrators, and parents.",
         tasks: [
@@ -129,5 +154,7 @@ export const useAtsHelpers = () => {
         skills,
         educationList,
         experienceList,
+        linkedinUrl,
+        githubUrl,
     }
 } 
