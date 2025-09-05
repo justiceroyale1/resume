@@ -52,7 +52,7 @@ const experienceList = [
         description: "Leading the development of a comprehensive marketplace platform that revolutionizes trade and commerce in emerging markets. Spearheading the implementation of advanced features and ensuring system scalability.",
         tasks: [
             'Architected and implemented a robust order management system, that reduced processing time by 40%',
-            'Developed enterprise market features supporting 100+ concurrent users with 99.9% uptime',
+            'Developed enterprise market features supporting 100s of concurrent users with 99.9% uptime',
             'Engineered call-center assisted transaction system which led to increase in customer usage by 30%',
             'Implemented secure market verification system and credit allocation engine',
             'Wrote feature-rich API endpoints for the frontend and backend',
@@ -103,7 +103,7 @@ const experienceList = [
         terminationReason: 'Company ran out of funding',
         description: "Led the development of a groundbreaking construction project management platform enabling remote project monitoring and management.",
         tasks: [
-            'Architected and implemented microservices-based system handling 100+ concurrent projects',
+            'Architected and implemented microservices-based system handling 100s of concurrent projects',
             'Developed real-time geo-tagged media processing system with 99.9% accuracy',
             'Built secure bidding and contract management system',
             'Implemented escrow payment system with multi-currency support and automated dispute resolution',
