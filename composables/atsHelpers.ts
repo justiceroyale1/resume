@@ -1,4 +1,4 @@
-const summary = "Results-driven Full Stack Software Engineer with 5+ years of experience in building scalable web applications and microservices. Proven track record of delivering high-performance solutions using modern technologies like Node.js, Vue.js, React, and Laravel. Strong expertise in RESTful API development, database optimization, and cloud infrastructure. Adept at leading development teams, implementing CI/CD pipelines, and driving technical excellence through code reviews and best practices."
+const summary = "Results-driven Full Stack Software Engineer with 6+ years of experience in building scalable web applications and microservices. Proven track record of delivering high-performance solutions using modern technologies like Node.js, Vue.js, React, and Laravel. Strong expertise in RESTful API development, database optimization, and cloud infrastructure. Adept at leading development teams, implementing CI/CD pipelines, and driving technical excellence through code reviews and best practices."
 
 const phoneNumber = "+2348130546010"
 const address = 'Abuja, Nigeria'
