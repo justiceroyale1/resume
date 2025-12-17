@@ -64,7 +64,7 @@ const experienceList = [
         position: 'Senior Software Engineer',
         company: 'KadMap - Abuja, Nigeria',
         website: 'https://www.kadmap.com/',
-        duration: 'August 2024 - Present',
+        duration: 'August 2024 - November 2025',
         terminationReason: 'Currently working',
         description: "KadMap’s all-in-one Central Office Computer gives you offline collaboration, secure local data control, cost-effective enterprise apps, and a forever-free office suite, with no internet or cloud required.",
         tasks: [
