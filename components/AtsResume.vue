@@ -54,40 +54,40 @@ const skillCategories = [
         {{ summary }}
       </div>
       <!-- Professional Contact Information -->
-      <div class="d-flex justify-center align-center flex-wrap mb-5" style="gap:32px; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; padding:12px 0;">
-        <div class="d-flex align-center">
-            <div>
-            <div class="text-caption text-grey-darken-2">Email</div>
-            <a :href="`mailto:${email}`" class="text-decoration-none">{{ email }}</a>
-          </div>
-        </div>
-        
-        <div class="d-flex align-center">
-            <div>
-            <div class="text-caption text-grey-darken-2">Phone</div>
-            <a :href="`tel:${phoneNumber}`" class="text-decoration-none">{{ phoneNumber }}</a>
-          </div>
-        </div>
-        
-        <div class="d-flex align-center">
-            <div>
-            <div class="text-caption text-grey-darken-2">Location</div>
-            <span>{{ address }}</span>
-          </div>
-        </div>
-        <div class="d-flex align-center">
-            <div>
-            <div class="text-caption text-grey-darken-2">Professional Links</div>
-            <div class="d-flex align-center">
-              <a :href="linkedinUrl" target="_blank" class="text-decoration-none">
-                <v-icon color="primary" size="small">mdi-linkedin</v-icon>
-                <span class="ml-2">LinkedIn</span>
-              </a>
-              <a :href="githubUrl" target="_blank" class="text-decoration-none ml-2">
-                <v-icon color="#24292e" size="small">mdi-github</v-icon>
-                <span class="ml-2">GitHub</span>
-              </a>
+      <div class="d-flex flex-column justify-center align-center flex-wrap mb-5" style="gap:8px; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; padding:12px 0;">
+        <div class="d-flex justify-space-between mb-5 w-50">
+          <div class="d-flex align-center">
+              <div>
+              <div class="text-caption text-grey-darken-2">Email</div>
+              <a :href="`mailto:${email}`" class="text-decoration-none">{{ email }}</a>
             </div>
+          </div>
+          
+          <div class="d-flex align-center">
+              <div>
+              <div class="text-caption text-grey-darken-2">Phone</div>
+              <a :href="`tel:${phoneNumber}`" class="text-decoration-none">{{ phoneNumber }}</a>
+            </div>
+          </div>
+          
+          <div class="d-flex align-center">
+              <div>
+              <div class="text-caption text-grey-darken-2">Location</div>
+              <span>{{ address }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-column justify-center align-center flex-wrap mb-5">
+          <div class="text-caption text-grey-darken-2">Professional Links</div>
+          <div class="d-flex flex-column justify-start">
+            <a :href="linkedinUrl" target="_blank" class="text-decoration-none" title="LinkedIn">
+              <v-icon color="primary" size="small">mdi-linkedin</v-icon>
+              <span class="ml-2">{{linkedinUrl}}</span>
+            </a>
+            <a :href="githubUrl" target="_blank" class="text-decoration-none ml-2" title="GitHub">
+              <v-icon color="#24292e" size="small">mdi-github</v-icon>
+              <span class="ml-2">{{githubUrl}}</span>
+            </a>
           </div>
         </div>
       </div>
@@ -98,10 +98,11 @@ const skillCategories = [
     <div v-for="exp in experienceList" :key="exp.company" class="mb-4">
       <div class="d-flex justify-space-between align-center">
         <div>
-          <div class="d-flex align-center">
+          <div class="d-flex flex-column align-start my-2">
             <span class="font-weight-bold" style="font-size:1.1rem;">{{ exp.company }}</span>
-            <a v-if="exp.website" :href="exp.website" target="_blank" class="ml-2" style="text-decoration:none;">
+            <a v-if="exp.website" :href="exp.website" target="_blank" style="text-decoration:none;">
               <v-icon color="primary" size="small">mdi-web</v-icon>
+              <span class="ml-2">{{exp.website}}</span>
             </a>
           </div>
           <div class="font-italic" style="font-size:1rem;">{{ exp.position }}</div>

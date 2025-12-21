@@ -6,7 +6,7 @@ const email = 'justiceroyale1@gmail.com'
 const position = 'Senior Full Stack Software Engineer'
 const name = 'Justice Abutu'
 const linkedinUrl = 'https://www.linkedin.com/in/justice-abutu-royale/'
-const githubUrl = 'https://github.com/justicemax'
+const githubUrl = 'https://github.com/justiceroyale1'
 
 const skills = [
     'Full Stack Software Engineering',
