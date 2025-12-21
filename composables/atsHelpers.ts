@@ -57,6 +57,7 @@ const experienceList = [
             'Implemented secure market verification system and credit allocation engine',
             'Wrote feature-rich API endpoints for the frontend and backend',
             'Wrote feature and unit tests for the backend',
+            'Configured ShadCN to implementation custom design system, improving the UI/UX',
             'Collaborated with hybrid teams across Kenya and Nigeria'
         ],
     },
