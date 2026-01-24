@@ -58,7 +58,8 @@ const experienceList = [
             'Wrote feature-rich API endpoints for the frontend and backend',
             'Wrote feature and unit tests for the backend',
             'Configured ShadCN to implementation custom design system, improving the UI/UX',
-            'Collaborated with hybrid teams across Kenya and Nigeria'
+            'Collaborated with hybrid teams across Kenya and Nigeria',
+            'Wrote a script that reduced full test suite runtime by 68% on Apple Silicon and 83.3% on Intel-based machines'
         ],
     },
     {
@@ -67,16 +68,14 @@ const experienceList = [
         website: 'https://www.kadmap.com/',
         duration: 'August 2024 - November 2025',
         terminationReason: 'Currently working',
-        description: "KadMap’s all-in-one Central Office Computer gives you offline collaboration, secure local data control, cost-effective enterprise apps, and a forever-free office suite, with no internet or cloud required.",
+        description: "KadMap's all-in-one Central Office Computer gives you offline collaboration, secure local data control, cost-effective enterprise apps, and a forever-free office suite, with no internet or cloud required.",
         tasks: [
-            'Built a custom SMTP server for the KadMap ecosystem',
-            'Built the KadMap Auth Service for the KadMap ecosystem',
-            'Built the KadMap Directory Service for the KadMap ecosystem',
-            'Built the KadMap Master Licensing Service for the KadMap ecosystem',
-            'Built the KadMap Connect App for the KadMap ecosystem',
-            'Provided technical support to the KadMap ecosystem',
-            'Implemented the backend for the KadMap Website',
-            'Customized open source software to fit the KadMap ecosystem',
+            'Architected and deployed core microservices for Authentication, Directory, and Master Licensing within the KadMap ecosystem',
+            'Engineered a high-performance custom SMTP server for secure, internal ecosystem communication',
+            'Developed the KadMap Connect application to facilitate offline collaboration and local data management',
+            'Designed and implemented the backend infrastructure for the official KadMap platform',
+            'Evaluated and customized open-source software to meet specific organizational requirements and integration standards',
+            'Provided high-level technical support and maintenance for ecosystem-wide infrastructure and services',
         ],
     },
     {
