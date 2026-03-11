@@ -55,26 +55,20 @@ const skillCategories = [
       </div>
       <!-- Professional Contact Information -->
       <div class="d-flex flex-column justify-center align-center flex-wrap mb-5" style="gap:8px; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; padding:12px 0;">
-        <div class="d-flex justify-space-between mb-5 w-50">
-          <div class="d-flex align-center">
-              <div>
-              <div class="text-caption text-grey-darken-2">Email</div>
-              <a :href="`mailto:${email}`" class="text-decoration-none">{{ email }}</a>
-            </div>
+        <div class="d-flex flex-column justify-space-between mb-5 w-100">
+          <div class="d-flex justify-center align-center">
+            <div class="d-inline-flex font-weight-medium text-grey-darken-2 mr-2">Email</div>
+            <a :href="`mailto:${email}`" class="text-decoration-none d-inline-flex">{{ email }}</a>
           </div>
           
-          <div class="d-flex align-center">
-              <div>
-              <div class="text-caption text-grey-darken-2">Phone</div>
-              <a :href="`tel:${phoneNumber}`" class="text-decoration-none">{{ phoneNumber }}</a>
-            </div>
+          <div class="d-flex justify-center align-center">
+            <div class="d-inline-flex font-weight-medium text-grey-darken-2 mr-2">Phone</div>
+            <a :href="`tel:${phoneNumber}`" class="text-decoration-none d-inline-flex">{{ phoneNumber }}</a>
           </div>
           
-          <div class="d-flex align-center">
-              <div>
-              <div class="text-caption text-grey-darken-2">Location</div>
-              <span>{{ address }}</span>
-            </div>
+          <div class="d-flex gap-2 justify-center align-center">
+            <div class="d-inline-flex font-weight-medium text-grey-darken-2 mr-2">Location</div>
+            <span class="d-inline-flex">{{ address }}</span>
           </div>
         </div>
         <div class="d-flex flex-column justify-center align-center flex-wrap mb-5">
