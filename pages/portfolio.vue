@@ -1,4 +1,10 @@
 <script setup lang="ts">
+const withBaseUrl = (path: string) => {
+  const baseUrl = useRuntimeConfig().app.baseURL;
+
+  return `${baseUrl.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
+};
+
 useSeoMeta({
   title: "Portfolio - Justice Abutu",
   ogTitle: "Portfolio - Justice Abutu",
@@ -6,7 +12,7 @@ useSeoMeta({
     "A concise portfolio of selected full stack software engineering work by Justice Abutu, including marketplace, enterprise office, education, and housing platform projects.",
   ogDescription:
     "A concise portfolio of selected full stack software engineering work by Justice Abutu, including marketplace, enterprise office, education, and housing platform projects.",
-  ogImage: "images/portfolio/amana-market.png",
+  ogImage: withBaseUrl("images/portfolio/amana-market.png"),
   twitterCard: "summary_large_image",
 });
 </script>

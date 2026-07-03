@@ -12,6 +12,12 @@ const {
   githubUrl,
 } = useAtsHelpers();
 
+const withBaseUrl = (path: string) => {
+  const baseUrl = useRuntimeConfig().app.baseURL;
+
+  return `${baseUrl.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
+};
+
 const portfolioSummary =
   "I am a fullstack software engineer with over six years experience building practical, scalable software across marketplaces, enterprise tools, education systems, housing operations, and API-driven platforms. I have worked remotely with clients and teams in the UK, the US, Kenya, and Nigeria, and I bring a steady, driven approach to solving hard product and engineering problems. I am open to meaningful challenges, including learning any tech stack required to get the job done well.";
 
@@ -19,28 +25,28 @@ const projectDefinitions = [
   {
     match: "KadMap",
     title: "KadMap",
-    image: "/images/portfolio/kadmap.png",
+    image: "images/portfolio/kadmap.png",
     category: "Offline-first enterprise office platform",
     accent: "#2563eb",
   },
   {
     match: "Coamana",
     title: "Amana Market / Coamana",
-    image: "/images/portfolio/amana-market.png",
+    image: "images/portfolio/amana-market.png",
     category: "Marketplace and assisted trade platform",
     accent: "#0f766e",
   },
   {
     match: "New Avenue",
     title: "New Avenue Homes",
-    image: "/images/portfolio/newavenuehomes.png",
+    image: "images/portfolio/newavenuehomes.png",
     category: "ADU management and operations platform",
     accent: "#7c3aed",
   },
   {
     match: "SchoolShell",
     title: "SchoolShell",
-    image: "/images/portfolio/schoolshell.png",
+    image: "images/portfolio/schoolshell.png",
     category: "Education management system",
     accent: "#b45309",
   },
@@ -81,6 +87,7 @@ const portfolioProjects = computed(() => {
 
       return {
         ...project,
+        image: withBaseUrl(project.image),
         role: experience.position,
         company: experience.company,
         duration: experience.duration,
@@ -152,7 +159,7 @@ const featuredSkills = computed(() => {
         </div>
 
         <v-img
-          src="/images/profile.jpg"
+          :src="withBaseUrl('images/profile.jpg')"
           :alt="`${name} profile photo`"
           class="profile-image"
           cover
