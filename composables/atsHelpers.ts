@@ -7,6 +7,7 @@ const position = 'Senior Full Stack Software Engineer'
 const name = 'Justice Abutu'
 const linkedinUrl = 'https://www.linkedin.com/in/justice-abutu-royale/'
 const githubUrl = 'https://github.com/justiceroyale1'
+const resumeUrl = 'https://justiceroyale1.github.io/resume/'
 
 const skills = [
     'Full Stack Software Engineering',
@@ -156,5 +157,6 @@ export const useAtsHelpers = () => {
         experienceList,
         linkedinUrl,
         githubUrl,
+        resumeUrl,
     }
 } 

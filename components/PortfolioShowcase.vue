@@ -10,6 +10,7 @@ const {
   experienceList,
   linkedinUrl,
   githubUrl,
+  resumeUrl,
 } = useAtsHelpers();
 
 const withBaseUrl = (path: string) => {
@@ -134,6 +135,16 @@ const featuredSkills = computed(() => {
               :href="`mailto:${email}`"
             >
               Contact
+            </v-btn>
+            <v-btn
+              color="#111827"
+              variant="flat"
+              rounded="0"
+              :href="resumeUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
             </v-btn>
             <v-btn
               variant="outlined"
