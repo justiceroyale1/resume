@@ -10,6 +10,7 @@ const {
   position,
   skills,
   educationList,
+  certificationList,
   experienceList,
   linkedinUrl,
   githubUrl,
@@ -118,6 +119,24 @@ const skillCategories = [
         </div>
         <!-- Add date if available -->
       </div>
+    </div>
+
+    <!-- Certifications -->
+    <SectionTitle title="CERTIFICATIONS" />
+    <div v-for="certification in certificationList" :key="certification.title" class="mb-3">
+      <div class="d-flex justify-space-between align-start">
+        <div>
+          <div class="font-weight-bold">{{ certification.title }}</div>
+          <div class="text-grey-darken-2">{{ certification.issuer }}</div>
+        </div>
+        <div class="text-right" style="font-size:0.95rem;">{{ certification.date }}</div>
+      </div>
+      <p class="mt-1 mb-1" style="font-size:0.98rem;">
+        {{ certification.description }}
+      </p>
+      <p class="mt-0 mb-1" style="font-size:0.98rem;">
+        {{ certification.details }}
+      </p>
     </div>
 
     <!-- Skills -->

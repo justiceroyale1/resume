@@ -13,6 +13,7 @@ const {
   position,
   skills,
   educationList,
+  certificationList,
   experienceList,
 } = useHelpers();
 
@@ -136,6 +137,35 @@ const contacts = computed(() => {
               ></v-list-item-subtitle>
             </v-list-item>
           </v-list>
+
+          <v-list lines="three" slim>
+            <v-list-subheader
+              class="px-0 text-h5 text-uppercase font-weight-bold"
+            >
+              Certificates
+            </v-list-subheader>
+
+            <v-list-item
+              class="px-0"
+              v-for="(certification, i) in certificationList"
+              :key="i"
+            >
+              <v-list-item-title
+                v-text="certification.title"
+                class="text-wrap"
+              ></v-list-item-title>
+              <v-list-item-subtitle
+                class="text-wrap"
+              >
+                {{ certification.issuer }} - {{ certification.date }}
+              </v-list-item-subtitle>
+              <v-list-item-subtitle
+                class="text-wrap"
+              >
+                {{ certification.details }}
+              </v-list-item-subtitle>
+            </v-list-item>
+          </v-list>
         </v-col>
 
         <v-divider class="ms-3 d-none d-md-flex" vertical> </v-divider>
@@ -184,6 +214,25 @@ const contacts = computed(() => {
                   {{ skill }}
                 </v-chip>
               </v-chip-group>
+            </v-col>
+          </v-row>
+
+          <v-row class="d-block d-md-none">
+            <v-col cols="12">
+              <h5 class="text-h5 text-uppercase font-weight-bold">
+                Certificates
+              </h5>
+              <div
+                v-for="certification in certificationList"
+                :key="certification.title"
+                class="py-2"
+              >
+                <p class="font-weight-bold mb-1">{{ certification.title }}</p>
+                <p class="mb-1">
+                  {{ certification.issuer }} - {{ certification.date }}
+                </p>
+                <p class="mb-0">{{ certification.details }}</p>
+              </div>
             </v-col>
           </v-row>
 

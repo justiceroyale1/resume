@@ -42,6 +42,27 @@ const educationList = [
     }
 ]
 
+const certificationList = [
+    {
+        title: 'micro1 Senior Full-Stack Software Engineering Certification',
+        issuer: 'micro1',
+        date: 'July 2026',
+        description: "I earned micro1's certification for senior full-stack software engineering.",
+        details: 'The assessment covered Core PHP, backend development, APIs, web architecture, databases, performance, scalability, and production thinking.',
+        image: 'images/certificates/micro1-certification.jpg',
+        topics: [
+            'Core PHP',
+            'Backend Development',
+            'APIs',
+            'Web Architecture',
+            'Databases',
+            'Performance',
+            'Scalability',
+            'Production Thinking'
+        ]
+    }
+]
+
 const experienceList = [
     {
         position: 'Senior Full Stack Developer',
@@ -154,6 +175,7 @@ export const useAtsHelpers = () => {
         position,
         skills,
         educationList,
+        certificationList,
         experienceList,
         linkedinUrl,
         githubUrl,

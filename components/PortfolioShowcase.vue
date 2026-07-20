@@ -7,6 +7,7 @@ const {
   name,
   position,
   skills,
+  certificationList,
   experienceList,
   linkedinUrl,
   githubUrl,
@@ -115,6 +116,19 @@ const featuredSkills = computed(() => {
 
   return preferredSkills.filter((skill) => skills.includes(skill));
 });
+
+const portfolioCertification = computed(() => {
+  const certification = certificationList[0];
+
+  if (!certification) {
+    return null;
+  }
+
+  return {
+    ...certification,
+    image: withBaseUrl(certification.image),
+  };
+});
 </script>
 
 <template>
@@ -191,6 +205,43 @@ const featuredSkills = computed(() => {
         >
           {{ skill }}
         </v-chip>
+      </section>
+
+      <section
+        v-if="portfolioCertification"
+        class="certification-section"
+        aria-labelledby="certification-title"
+      >
+        <div class="certification-copy">
+          <p class="certification-kicker">Certification</p>
+          <h2 id="certification-title">{{ portfolioCertification.title }}</h2>
+          <p class="certification-meta">
+            {{ portfolioCertification.issuer }} / {{ portfolioCertification.date }}
+          </p>
+          <p class="certification-description">
+            {{ portfolioCertification.description }}
+          </p>
+          <p class="certification-description">
+            {{ portfolioCertification.details }}
+          </p>
+
+          <div class="certification-topics" aria-label="Assessment topics">
+            <v-chip
+              v-for="topic in portfolioCertification.topics"
+              :key="topic"
+              size="small"
+              variant="outlined"
+            >
+              {{ topic }}
+            </v-chip>
+          </div>
+        </div>
+
+        <v-img
+          :src="portfolioCertification.image"
+          alt="micro1 certificate awarded to Justice Abutu"
+          class="certification-image"
+        />
       </section>
 
       <v-divider class="section-divider" />
@@ -343,6 +394,65 @@ h1 {
   background: #ffffff;
 }
 
+.certification-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  align-items: center;
+  gap: 28px;
+  margin-top: 40px;
+  padding: 24px;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.certification-kicker {
+  margin: 0 0 10px;
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.certification-copy h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.certification-meta {
+  margin: 10px 0 0;
+  color: #374151;
+  font-weight: 800;
+}
+
+.certification-description {
+  margin: 14px 0 0;
+  color: #4b5563;
+  line-height: 1.65;
+}
+
+.certification-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.certification-image {
+  width: 100%;
+  aspect-ratio: 17 / 12;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 6px;
+  background: #111827;
+}
+
+.certification-image :deep(.v-img__img) {
+  object-fit: contain;
+}
+
 .section-divider {
   margin: 42px 0;
   border-color: rgba(17, 24, 39, 0.12);
@@ -492,6 +602,10 @@ h1 {
   .projects-grid {
     grid-template-columns: 1fr;
   }
+
+  .certification-section {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
@@ -516,6 +630,10 @@ h1 {
   }
 
   .project-content {
+    padding: 20px;
+  }
+
+  .certification-section {
     padding: 20px;
   }
 }
