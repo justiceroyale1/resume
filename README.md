@@ -1,6 +1,16 @@
-# Justice Abutu - Fullstack Developer Resume
+# Justice Abutu - Senior Backend / Full-Stack Engineer Résumé
 
-I am a Fullstack Developer and I created this repo to manage updates to my resume.
+This Nuxt application contains my ATS-friendly résumé and portfolio. The canonical résumé is available at both `/` and `/resume`; `/portfolio` contains selected work.
+
+## Local Development
+
+```bash
+npm run dev
+```
+
+## PDF Export
+
+Open either résumé route in Chrome and choose **Print → Save as PDF**. Use A4 paper, default scale, no browser headers or footers, and background graphics enabled. The print stylesheet is designed for a two-page, selectable-text PDF.
 
 ## Build & Deploy
 
@@ -23,4 +33,4 @@ npx gh-pages --dotfiles -d .output/public
 I want to thank the creators and contributors of the following projects for making this task much easier:
 
 - [Nuxt 3](https://nuxt.com/docs/getting-started/introduction).
-- [Veutify](https://vuetifyjs.com/en/getting-started/installation/#installation).
+- [Vuetify](https://vuetifyjs.com/en/getting-started/installation/#installation).

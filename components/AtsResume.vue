@@ -4,174 +4,409 @@ import { useAtsHelpers } from "../composables/atsHelpers";
 const {
   summary,
   phoneNumber,
+  phoneHref,
   address,
+  availability,
   email,
   name,
   position,
-  skills,
+  skillCategories,
   educationList,
   certificationList,
   experienceList,
+  independentProjectList,
   linkedinUrl,
   githubUrl,
+  managedCoUrl,
 } = useAtsHelpers();
-
-// Organized skills by category for better customization per job application
-const skillCategories = [
-  {
-    name: "Technologies & Frameworks",
-    skills: ["React.js", "Vue.js", "Node.js", "Express.js", "Nuxt.js", "Adonis.js", "Laravel", "PHP", "TypeScript", "JavaScript", "MongoDB", "MySQL", "Vuex", "TailwindCSS", "Bootstrap", "CodeIgniter"]
-  },
-  {
-    name: "Infrastructure & DevOps",
-    skills: ["Docker", "Docker Compose", "AWS", "AWS EC2", "AWS S3", "Jenkins", "GitHub Actions", "CircleCI", "Nginx", "Git", "GitHub"]
-  },
-  {
-    name: "Architecture & Methodology",
-    skills: ["Full Stack Development", "RESTful API Design", "Microservices", "System Architecture", "Database Optimization", "API Gateway", "Redis"]
-  },
-  {
-    name: "Testing & Quality",
-    skills: ["PHPUnit", "Unit Testing", "Integration Testing", "Test-Driven Development"]
-  },
-  {
-    name: "Leadership & Technical Practices", 
-    skills: ["Technical Leadership", "Agile", "Scrum", "Code Review", "Performance Optimization", "Security Implementation", "CI/CD Pipeline Design"]
-  },
-  {
-    name: "Professional Skills",
-    skills: ["Problem Solving", "Team Collaboration", "Communication", "Critical Thinking", "Mentoring", "Adaptability"]
-  }
-];
 </script>
 
 <template>
-  <v-container class="pa-0" style="max-width:900px;margin:auto;">
-    <!-- Header -->
-    <div class="text-center mt-8">
-      <h1 class="font-weight-bold" style="font-size:2.5rem;">{{ name }}</h1>
-      <h3 class="text-subtitle-1 text-grey-darken-1 font-weight-regular mb-3">{{ position }}</h3>
-      <div class="mt-2 mb-4" style="font-size:1.05rem; max-width:800px; margin:auto;">
-        {{ summary }}
-      </div>
-      <!-- Professional Contact Information -->
-      <div class="d-flex flex-column justify-center align-center flex-wrap mb-5" style="gap:8px; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; padding:12px 0;">
-        <div class="d-flex flex-column justify-space-between mb-5 w-100">
-          <div class="d-flex justify-center align-center">
-            <div class="d-inline-flex font-weight-medium text-grey-darken-2 mr-2">Email</div>
-            <a :href="`mailto:${email}`" class="text-decoration-none d-inline-flex">{{ email }}</a>
-          </div>
-          
-          <div class="d-flex justify-center align-center">
-            <div class="d-inline-flex font-weight-medium text-grey-darken-2 mr-2">Phone</div>
-            <a :href="`tel:${phoneNumber}`" class="text-decoration-none d-inline-flex">{{ phoneNumber }}</a>
-          </div>
-          
-          <div class="d-flex gap-2 justify-center align-center">
-            <div class="d-inline-flex font-weight-medium text-grey-darken-2 mr-2">Location</div>
-            <span class="d-inline-flex">{{ address }}</span>
-          </div>
+  <main class="resume-shell">
+    <header class="resume-header">
+      <h1>{{ name }}</h1>
+      <p class="target-title">{{ position }}</p>
+      <p class="location-line">{{ address }} <span aria-hidden="true">|</span> {{ availability }}</p>
+
+      <address class="contact-list">
+        <a :href="`mailto:${email}`">{{ email }}</a>
+        <span aria-hidden="true">|</span>
+        <a :href="`tel:${phoneHref}`">{{ phoneNumber }}</a>
+        <span aria-hidden="true">|</span>
+        <a :href="linkedinUrl" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span aria-hidden="true">|</span>
+        <a :href="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span aria-hidden="true">|</span>
+        <a :href="managedCoUrl" target="_blank" rel="noopener noreferrer">ManagedCo</a>
+      </address>
+    </header>
+
+    <section aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Professional Summary</h2>
+      <p class="summary">{{ summary }}</p>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Technical Skills</h2>
+      <dl class="skill-list">
+        <div v-for="category in skillCategories" :key="category.name">
+          <dt>{{ category.name }}:</dt>
+          <dd>{{ category.skills.join(", ") }}</dd>
         </div>
-        <div class="d-flex flex-column justify-center align-center flex-wrap mb-5">
-          <div class="text-caption text-grey-darken-2">Professional Links</div>
-          <div class="d-flex flex-column justify-start">
-            <a :href="linkedinUrl" target="_blank" class="text-decoration-none" title="LinkedIn">
-              <v-icon color="primary" size="small">mdi-linkedin</v-icon>
-              <span class="ml-2">{{linkedinUrl}}</span>
+      </dl>
+    </section>
+
+    <section aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Professional Experience</h2>
+      <article v-for="experience in experienceList" :key="`${experience.company}-${experience.duration}`" class="entry">
+        <div class="entry-heading">
+          <h3>
+            <a v-if="experience.website" :href="experience.website" target="_blank" rel="noopener noreferrer">
+              {{ experience.company }}
             </a>
-            <a :href="githubUrl" target="_blank" class="text-decoration-none ml-2" title="GitHub">
-              <v-icon color="#24292e" size="small">mdi-github</v-icon>
-              <span class="ml-2">{{githubUrl}}</span>
-            </a>
-          </div>
+            <span v-else>{{ experience.company }}</span>
+            <span class="separator" aria-hidden="true"> | </span>{{ experience.position }}<template v-if="experience.employmentType">, {{ experience.employmentType }}</template>
+          </h3>
+          <p class="entry-meta">{{ experience.location }} <span aria-hidden="true">|</span> {{ experience.duration }}</p>
         </div>
-      </div>
-    </div>
+        <p class="entry-description">{{ experience.description }}</p>
+        <ul>
+          <li v-for="task in experience.tasks" :key="task">{{ task }}</li>
+        </ul>
+      </article>
+    </section>
 
-    <!-- Work Experience -->
-    <SectionTitle title="WORK EXPERIENCE" />
-    <div v-for="exp in experienceList" :key="exp.company" class="mb-4">
-      <div class="d-flex justify-space-between align-center">
-        <div>
-          <div class="d-flex flex-column align-start my-2">
-            <span class="font-weight-bold" style="font-size:1.1rem;">{{ exp.company }}</span>
-            <a v-if="exp.website" :href="exp.website" target="_blank" style="text-decoration:none;">
-              <v-icon color="primary" size="small">mdi-web</v-icon>
-              <span class="ml-2">{{exp.website}}</span>
-            </a>
-          </div>
-          <div class="font-italic" style="font-size:1rem;">{{ exp.position }}</div>
+    <section aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Selected Independent Project</h2>
+      <article v-for="project in independentProjectList" :key="project.name" class="entry project-entry">
+        <div class="entry-heading">
+          <h3>
+            <a :href="project.website" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
+            <span class="separator" aria-hidden="true"> | </span>{{ project.role }}
+          </h3>
+          <p class="entry-meta">{{ project.duration }}</p>
         </div>
-        <div class="text-right" style="font-size:0.95rem;">{{ exp.duration }}</div>
-      </div>
-      <ul class="mt-1 mb-1" style="padding-left:1.2em;">
-        <li v-for="task in exp.tasks" :key="task" style="font-size:0.98rem;">{{ task }}</li>
-      </ul>
-    </div>
+        <p class="entry-description">{{ project.description }}</p>
+        <ul>
+          <li v-for="task in project.tasks" :key="task">{{ task }}</li>
+        </ul>
+      </article>
+    </section>
 
-    <!-- Education -->
-    <SectionTitle title="EDUCATION" />
-    <div v-for="edu in educationList" :key="edu.title" class="mb-2">
-      <div class="d-flex justify-space-between align-center">
-        <div>
-          <span class="font-weight-bold">{{ edu.title }}</span>
-          <span class="ml-2">{{ edu.subtitle }}</span>
-        </div>
-        <!-- Add date if available -->
-      </div>
-    </div>
+    <section aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      <article v-for="education in educationList" :key="education.title" class="credential">
+        <h3>{{ education.title }}</h3>
+        <p>{{ education.institution }}, {{ education.location }} <span aria-hidden="true">|</span> {{ education.duration }}</p>
+      </article>
+    </section>
 
-    <!-- Certifications -->
-    <SectionTitle title="CERTIFICATIONS" />
-    <div v-for="certification in certificationList" :key="certification.title" class="mb-3">
-      <div class="d-flex justify-space-between align-start">
-        <div>
-          <div class="font-weight-bold">{{ certification.title }}</div>
-          <div class="text-grey-darken-2">{{ certification.issuer }}</div>
-        </div>
-        <div class="text-right" style="font-size:0.95rem;">{{ certification.date }}</div>
-      </div>
-      <p class="mt-1 mb-1" style="font-size:0.98rem;">
-        {{ certification.description }}
-      </p>
-      <p class="mt-0 mb-1" style="font-size:0.98rem;">
-        {{ certification.details }}
-      </p>
-    </div>
-
-    <!-- Skills -->
-    <SectionTitle title="SKILLS" />
-    <div class="mb-4">
-      <div v-for="category in skillCategories" :key="category.name" class="mb-2">
-        <div class="font-weight-medium text-grey-darken-2" style="font-size:0.95rem;">{{ category.name }}:</div>
-        <div style="font-size:1rem;">
-          <span v-for="(skill, i) in category.skills" :key="skill">
-            {{ skill }}<span v-if="i < category.skills.length - 1">, </span>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Add Projects, Certificates, Awards as needed -->
-  </v-container>
+    <section aria-labelledby="certification-heading">
+      <h2 id="certification-heading">Certification</h2>
+      <article v-for="certification in certificationList" :key="certification.title" class="credential">
+        <h3>{{ certification.title }}</h3>
+        <p>{{ certification.issuer }} <span aria-hidden="true">|</span> {{ certification.date }}</p>
+        <p>{{ certification.details }}</p>
+      </article>
+    </section>
+  </main>
 </template>
 
 <style scoped>
-@media print {
-  .v-container {
-    padding: 0 !important;
+.resume-shell {
+  box-sizing: border-box;
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 32px 42px 48px;
+  color: #172033;
+  background: #fff;
+  font-size: 15px;
+  line-height: 1.42;
+}
+
+.resume-header {
+  padding-bottom: 12px;
+  text-align: center;
+  border-bottom: 1px solid #c9d1dc;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd {
+  margin: 0;
+}
+
+h1 {
+  color: #111827;
+  font-size: 34px;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.target-title {
+  margin-top: 5px;
+  color: #27364d;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.location-line,
+.contact-list {
+  margin-top: 4px;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 7px;
+  font-style: normal;
+}
+
+a {
+  color: #174f89;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
+
+section {
+  margin-top: 14px;
+}
+
+h2 {
+  margin-bottom: 7px;
+  padding-bottom: 3px;
+  color: #174f89;
+  border-bottom: 1px solid #aeb9c8;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+.summary {
+  text-align: left;
+}
+
+.skill-list > div {
+  display: flex;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.skill-list dt {
+  flex: 0 0 auto;
+  font-weight: 700;
+}
+
+.skill-list dd {
+  min-width: 0;
+}
+
+.entry {
+  margin-top: 11px;
+}
+
+.entry-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+h3 {
+  color: #111827;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.entry-meta {
+  flex: 0 0 auto;
+  color: #4b5563;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.entry-description {
+  margin-top: 2px;
+  color: #374151;
+  font-style: italic;
+}
+
+ul {
+  margin: 3px 0 0;
+  padding-left: 19px;
+}
+
+li {
+  margin-top: 2px;
+  padding-left: 2px;
+}
+
+.credential h3,
+.credential p {
+  display: inline;
+}
+
+.credential h3 + p {
+  padding-inline-start: 0.4em;
+}
+
+.credential p + p::before {
+  content: " — ";
+}
+
+@media (max-width: 680px) {
+  .resume-shell {
+    padding: 24px 20px 36px;
+    font-size: 14px;
   }
-  
+
   h1 {
-    font-size: 24pt !important;
+    font-size: 29px;
   }
-  
-  h3 {
-    font-size: 14pt !important;
+
+  .target-title {
+    font-size: 16px;
   }
-  
-  .text-caption {
-    font-size: 6pt !important;
+
+  .location-line span {
+    display: none;
+  }
+
+  .location-line {
+    display: grid;
+    gap: 2px;
+  }
+
+  .entry-heading {
+    display: block;
+  }
+
+  .entry-meta {
+    margin-top: 2px;
+    white-space: normal;
+  }
+
+  .skill-list > div {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .skill-list dt,
+  .skill-list dd {
+    display: inline;
   }
 }
-</style> 
+
+@page {
+  size: A4;
+  margin: 14mm;
+}
+
+@media print {
+  .resume-shell {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-size: 10.5pt;
+    line-height: 1.23;
+  }
+
+  .resume-header {
+    padding-bottom: 5pt;
+    border-color: #777;
+  }
+
+  h1 {
+    color: #000;
+    font-size: 23pt;
+  }
+
+  .target-title {
+    margin-top: 2pt;
+    color: #111;
+    font-size: 12.5pt;
+  }
+
+  .location-line,
+  .contact-list,
+  .entry-meta {
+    color: #222;
+    font-size: 9.5pt;
+  }
+
+  .location-line,
+  .contact-list {
+    margin-top: 2pt;
+  }
+
+  a {
+    color: #000;
+  }
+
+  section {
+    margin-top: 7pt;
+  }
+
+  h2 {
+    margin-bottom: 3pt;
+    padding-bottom: 1pt;
+    color: #000;
+    border-color: #777;
+    font-size: 11.5pt;
+  }
+
+  .skill-list > div {
+    margin-top: 0.5pt;
+  }
+
+  .entry {
+    margin-top: 5pt;
+  }
+
+  h3 {
+    font-size: 10.5pt;
+  }
+
+  .entry-description {
+    margin-top: 1pt;
+    color: #111;
+  }
+
+  ul {
+    margin-top: 1pt;
+    padding-left: 15pt;
+  }
+
+  li {
+    margin-top: 0.6pt;
+    padding-left: 1pt;
+  }
+
+  h2,
+  .entry-heading,
+  .credential {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .entry-heading + .entry-description,
+  .entry-heading + ul,
+  .entry-description + ul li:first-child {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+}
+</style>

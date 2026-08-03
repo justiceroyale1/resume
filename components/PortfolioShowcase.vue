@@ -21,7 +21,7 @@ const withBaseUrl = (path: string) => {
 };
 
 const portfolioSummary =
-  "I am a fullstack software engineer with over six years experience building practical, scalable software across marketplaces, enterprise tools, education systems, housing operations, and API-driven platforms. I have worked remotely with clients and teams in the UK, the US, Kenya, and Nigeria, and I bring a steady, driven approach to solving hard product and engineering problems. I am open to meaningful challenges, including learning any tech stack required to get the job done well.";
+  "I am a backend and full-stack software engineer with seven years of experience building practical, scalable software across marketplaces, enterprise tools, education systems, housing operations, and API-driven platforms. I have worked remotely with clients and teams in the UK, the US, Kenya, and Nigeria, and I bring a steady, driven approach to solving hard product and engineering problems.";
 
 const projectDefinitions = [
   {
@@ -70,7 +70,7 @@ const monthOrder: Record<string, number> = {
 };
 
 const getStartTimestamp = (duration: string) => {
-  const [startDate] = duration.split(" - ");
+  const [startDate] = duration.split(/\s+[–-]\s+/);
   const [month, year] = startDate.split(" ");
 
   return new Date(Number(year), monthOrder[month] ?? 0).getTime();
@@ -104,14 +104,14 @@ const portfolioProjects = computed(() => {
 
 const featuredSkills = computed(() => {
   const preferredSkills = [
-    "Full Stack Software Engineering",
-    "System Architecture",
-    "RESTful API Design",
-    "React.js & Vue.js",
-    "Node.js & Express.js",
-    "Laravel & PHP",
-    "Database Optimization",
-    "Cloud Infrastructure (AWS)",
+    "PHP",
+    "Laravel",
+    "Node.js",
+    "TypeScript",
+    "REST APIs",
+    "Vue 3",
+    "React",
+    "Redis",
   ];
 
   return preferredSkills.filter((skill) => skills.includes(skill));
@@ -184,7 +184,7 @@ const portfolioCertification = computed(() => {
         </div>
 
         <v-img
-          :src="withBaseUrl('images/profile.jpg')"
+          :src="withBaseUrl('images/headshot.jpg')"
           :alt="`${name} profile photo`"
           class="profile-image"
           cover
@@ -369,7 +369,7 @@ h1 {
 
 .profile-image {
   width: 220px;
-  height: 220px;
+  height: 250px;
   border: 1px solid rgba(17, 24, 39, 0.12);
   border-radius: 8px;
   background: #e5e7eb;
@@ -592,7 +592,7 @@ h1 {
   .profile-image {
     order: -1;
     width: 176px;
-    height: 176px;
+    height: 200px;
   }
 
   .hero-actions {

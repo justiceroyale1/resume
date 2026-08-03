@@ -1,36 +1,45 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "Justice Abutu - Senior Full Stack Software Engineer",
-  ogTitle: "Justice Abutu - Senior Full Stack Software Engineer",
+  title: "Justice Abutu - Senior Backend / Full-Stack Software Engineer",
+  ogTitle: "Justice Abutu - Senior Backend / Full-Stack Software Engineer",
   description:
-    "Justice Abutu is a senior full stack software engineer. He is skilled in PHP, Laravel, Javascript, Typescript, Nodejs, Vue, etc. He has over 5 years of experience building scalable solutions for various companies spanning 3 continents. He is a quick learner, a team player and a great problem solver. Learn more about his experience here. ",
+    "Justice Abutu is a senior backend and full-stack software engineer with seven years of experience building business-critical platforms with PHP, Laravel, TypeScript, Node.js, Vue, and React.",
   ogDescription:
-    "Justice Abutu is a senior full stack software engineer. He is skilled in PHP, Laravel, Javascript, Typescript, Nodejs, Vue, etc. He has over 5 years of experience building scalable solutions for various companies spanning 3 continents. He is a quick learner, a team player and a great problem solver. Learn more about his experience here. ",
-  ogImage: "images/profile.jpg",
+    "Justice Abutu is a senior backend and full-stack software engineer with seven years of experience building business-critical platforms with PHP, Laravel, TypeScript, Node.js, Vue, and React.",
+  ogImage: "images/headshot.jpg",
   twitterCard: "summary_large_image",
 });
 </script>
 <template>
-  <v-app>
-    <v-main>
-      <AtsResume></AtsResume>
-    </v-main>
-  </v-app>
+  <AtsResume />
 </template>
 <style>
-*,
+html,
 body {
+  margin: 0;
+  min-height: 100%;
   font-family: "Lato", sans-serif;
 }
 
-/**@media print {
+#__nuxt {
+  min-height: 100%;
+}
+
+body {
+  background: #f3f5f8;
+}
+
+@media print {
+  html,
+  body,
+  #__nuxt {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
   body {
-    overflow: auto;
-    height: auto;
+    background: #fff;
   }
-  .scroll-y {
-    height: auto;
-    overflow: visible;
-  }
-}**/
+}
 </style>
