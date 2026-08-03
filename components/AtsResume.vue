@@ -319,31 +319,33 @@ li {
     max-width: none;
     margin: 0;
     padding: 0;
-    color: #000;
+    color: #172033;
     font-size: 10.5pt;
     line-height: 1.23;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .resume-header {
     padding-bottom: 5pt;
-    border-color: #777;
+    border-color: #c9d1dc;
   }
 
   h1 {
-    color: #000;
+    color: #111827;
     font-size: 23pt;
   }
 
   .target-title {
     margin-top: 2pt;
-    color: #111;
+    color: #27364d;
     font-size: 12.5pt;
   }
 
   .location-line,
   .contact-list,
   .entry-meta {
-    color: #222;
+    color: #4b5563;
     font-size: 9.5pt;
   }
 
@@ -353,7 +355,7 @@ li {
   }
 
   a {
-    color: #000;
+    color: #174f89;
   }
 
   section {
@@ -363,8 +365,8 @@ li {
   h2 {
     margin-bottom: 3pt;
     padding-bottom: 1pt;
-    color: #000;
-    border-color: #777;
+    color: #174f89;
+    border-color: #aeb9c8;
     font-size: 11.5pt;
   }
 
@@ -382,7 +384,7 @@ li {
 
   .entry-description {
     margin-top: 1pt;
-    color: #111;
+    color: #374151;
   }
 
   ul {

@@ -10,7 +10,7 @@ npm run dev
 
 ## PDF Export
 
-Open either résumé route in Chrome and choose **Print → Save as PDF**. Use A4 paper, default scale, no browser headers or footers, and background graphics enabled. The print stylesheet is designed for a two-page, selectable-text PDF.
+Open either résumé route in Chrome and choose **Print → Save as PDF**. Select colour mode, use A4 paper and the default scale, disable browser headers and footers, and enable background graphics. The print stylesheet is designed for a two-page, selectable-text PDF with the résumé's accent colours preserved.
 
 ## Build & Deploy
 
