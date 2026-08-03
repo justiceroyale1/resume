@@ -34,13 +34,23 @@ export default defineNuxtConfig({
         // <link rel="stylesheet" href="https://myawesome-lib.css">
         { rel: 'preconnect', href: "https://fonts.googleapis.com" },
         { rel: 'preconnect', href: "https://fonts.gstatic.com", crossorigin: 'anonymous' },
-        { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" },
+        { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" },
       ],
       noscript: [
         // <noscript>JavaScript is required</noscript>
         { children: 'JavaScript is required' }
       ]
     }
+  },
+  nitro: {
+    prerender: {
+      routes: [
+        '/portfolio/managedco',
+        '/portfolio/amanamarket',
+        '/portfolio/kadmap',
+        '/portfolio/xradar360',
+      ],
+    },
   },
   ssr: true
 

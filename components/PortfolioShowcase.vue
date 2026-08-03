@@ -1,640 +1,856 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { useAtsHelpers } from "../composables/atsHelpers";
+import { usePortfolioContent } from "../composables/usePortfolioContent";
 
 const {
-  email,
   name,
-  position,
-  skills,
-  certificationList,
-  experienceList,
+  email,
+  address,
+  availability,
   linkedinUrl,
   githubUrl,
   resumeUrl,
+  certificationList,
 } = useAtsHelpers();
+
+const {
+  proofPoints,
+  featuredProjects,
+  skillGroups,
+  additionalExperience,
+  workPrinciples,
+  currentFocus,
+} = usePortfolioContent();
+
+const certification = certificationList[0];
 
 const withBaseUrl = (path: string) => {
   const baseUrl = useRuntimeConfig().app.baseURL;
 
   return `${baseUrl.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
 };
-
-const portfolioSummary =
-  "I am a backend and full-stack software engineer with seven years of experience building practical, scalable software across marketplaces, enterprise tools, education systems, housing operations, and API-driven platforms. I have worked remotely with clients and teams in the UK, the US, Kenya, and Nigeria, and I bring a steady, driven approach to solving hard product and engineering problems.";
-
-const projectDefinitions = [
-  {
-    match: "KadMap",
-    title: "KadMap",
-    image: "images/portfolio/kadmap.png",
-    category: "Offline-first enterprise office platform",
-    accent: "#2563eb",
-  },
-  {
-    match: "Coamana",
-    title: "Amana Market / Coamana",
-    image: "images/portfolio/amana-market.png",
-    category: "Marketplace and assisted trade platform",
-    accent: "#0f766e",
-  },
-  {
-    match: "New Avenue",
-    title: "New Avenue Homes",
-    image: "images/portfolio/newavenuehomes.png",
-    category: "ADU management and operations platform",
-    accent: "#7c3aed",
-  },
-  {
-    match: "SchoolShell",
-    title: "SchoolShell",
-    image: "images/portfolio/schoolshell.png",
-    category: "Education management system",
-    accent: "#b45309",
-  },
-];
-
-const monthOrder: Record<string, number> = {
-  January: 0,
-  February: 1,
-  March: 2,
-  April: 3,
-  May: 4,
-  June: 5,
-  July: 6,
-  August: 7,
-  September: 8,
-  October: 9,
-  November: 10,
-  December: 11,
-};
-
-const getStartTimestamp = (duration: string) => {
-  const [startDate] = duration.split(/\s+[–-]\s+/);
-  const [month, year] = startDate.split(" ");
-
-  return new Date(Number(year), monthOrder[month] ?? 0).getTime();
-};
-
-const portfolioProjects = computed(() => {
-  return projectDefinitions
-    .map((project) => {
-      const experience = experienceList.find((item) =>
-        item.company.includes(project.match)
-      );
-
-      if (!experience) {
-        return null;
-      }
-
-      return {
-        ...project,
-        image: withBaseUrl(project.image),
-        role: experience.position,
-        company: experience.company,
-        duration: experience.duration,
-        description: experience.description,
-        website: experience.website,
-        highlights: experience.tasks.slice(0, 4),
-      };
-    })
-    .filter(Boolean)
-    .sort((a, b) => getStartTimestamp(b.duration) - getStartTimestamp(a.duration));
-});
-
-const featuredSkills = computed(() => {
-  const preferredSkills = [
-    "PHP",
-    "Laravel",
-    "Node.js",
-    "TypeScript",
-    "REST APIs",
-    "Vue 3",
-    "React",
-    "Redis",
-  ];
-
-  return preferredSkills.filter((skill) => skills.includes(skill));
-});
-
-const portfolioCertification = computed(() => {
-  const certification = certificationList[0];
-
-  if (!certification) {
-    return null;
-  }
-
-  return {
-    ...certification,
-    image: withBaseUrl(certification.image),
-  };
-});
 </script>
 
 <template>
-  <div class="portfolio-page">
-    <v-container class="portfolio-shell">
+  <main class="portfolio-page">
+    <div class="portfolio-shell">
       <header class="portfolio-hero">
         <div class="hero-copy">
-          <div>
-            <h1>{{ name }}</h1>
-            <p class="position">{{ position }}</p>
-          </div>
+          <p class="eyebrow">Senior product engineering</p>
+          <h1>{{ name }}</h1>
+          <p class="position">Senior Backend and Full-Stack Software Engineer</p>
+          <p class="hero-statement">
+            I build reliable web platforms for businesses with complex
+            operational, financial and marketplace workflows.
+          </p>
+          <p class="hero-context">
+            Seven years of experience across backend engineering, frontend
+            development, APIs, databases, testing, deployment and production
+            support.
+          </p>
+          <p class="availability">
+            {{ address }} <span aria-hidden="true">·</span> {{ availability }}
+          </p>
 
-          <div class="hero-actions">
-            <v-btn
-              color="#111827"
-              variant="flat"
-              rounded="0"
-              :href="`mailto:${email}`"
-            >
-              Contact
-            </v-btn>
-            <v-btn
-              color="#111827"
-              variant="flat"
-              rounded="0"
-              :href="resumeUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Resume
-            </v-btn>
-            <v-btn
-              variant="outlined"
-              rounded="0"
-              :href="githubUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <v-icon start icon="mdi-github" />
-              GitHub
-            </v-btn>
-            <v-btn
-              variant="outlined"
-              rounded="0"
-              :href="linkedinUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <v-icon start icon="mdi-linkedin" />
-              LinkedIn
-            </v-btn>
-          </div>
+          <nav class="link-row hero-links" aria-label="Primary links">
+            <a class="primary-link" :href="resumeUrl">View my résumé</a>
+            <a :href="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a :href="linkedinUrl" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a :href="`mailto:${email}`">Email me</a>
+          </nav>
         </div>
 
-        <v-img
-          :src="withBaseUrl('images/headshot.jpg')"
-          :alt="`${name} profile photo`"
-          class="profile-image"
-          cover
-        />
+        <picture class="portrait-frame">
+          <source
+            :srcset="withBaseUrl('images/headshot.webp')"
+            type="image/webp"
+          >
+          <img
+            :src="withBaseUrl('images/headshot.jpg')"
+            :alt="`${name}, senior backend and full-stack software engineer`"
+            width="1122"
+            height="1402"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </picture>
       </header>
 
-      <p class="summary">
-        {{ portfolioSummary }}
-      </p>
-
-      <section class="skills-row" aria-label="Featured skills">
-        <v-chip
-          v-for="skill in featuredSkills"
-          :key="skill"
-          size="small"
-          variant="outlined"
-          class="skill-chip"
-        >
-          {{ skill }}
-        </v-chip>
+      <section class="proof-section" aria-labelledby="proof-title">
+        <h2 id="proof-title" class="sr-only">Experience highlights</h2>
+        <ul class="proof-grid">
+          <li v-for="point in proofPoints" :key="point">{{ point }}</li>
+        </ul>
       </section>
 
-      <section
-        v-if="portfolioCertification"
-        class="certification-section"
-        aria-labelledby="certification-title"
-      >
-        <div class="certification-copy">
-          <p class="certification-kicker">Certification</p>
-          <h2 id="certification-title">{{ portfolioCertification.title }}</h2>
-          <p class="certification-meta">
-            {{ portfolioCertification.issuer }} / {{ portfolioCertification.date }}
+      <section class="page-section" aria-labelledby="selected-work-title">
+        <div class="section-heading">
+          <p class="eyebrow">Selected work</p>
+          <h2 id="selected-work-title">Systems, workflows and engineering decisions</h2>
+          <p>
+            Four projects that show current ownership, work in complex domains
+            and experience improving products with real operational constraints.
           </p>
-          <p class="certification-description">
-            {{ portfolioCertification.description }}
-          </p>
-          <p class="certification-description">
-            {{ portfolioCertification.details }}
-          </p>
-
-          <div class="certification-topics" aria-label="Assessment topics">
-            <v-chip
-              v-for="topic in portfolioCertification.topics"
-              :key="topic"
-              size="small"
-              variant="outlined"
-            >
-              {{ topic }}
-            </v-chip>
-          </div>
         </div>
 
-        <v-img
-          :src="portfolioCertification.image"
-          alt="micro1 certificate awarded to Justice Abutu"
-          class="certification-image"
-        />
-      </section>
-
-      <v-divider class="section-divider" />
-
-      <section class="work-intro" aria-labelledby="previous-work-title">
-        <h2 id="previous-work-title">Some of my previous works</h2>
-        <p>
-          A selection of products and platforms I have helped build across
-          different teams, industries, and markets.
-        </p>
-      </section>
-
-      <section class="projects-grid" aria-label="Portfolio projects">
-        <article
-          v-for="project in portfolioProjects"
-          :key="project.title"
-          class="project-card"
-        >
-          <div
-            class="project-accent"
-            :style="{ backgroundColor: project.accent }"
-          />
-
-          <v-img
-            :src="project.image"
-            :alt="`${project.title} screenshot`"
-            class="project-image"
-            cover
-            height="250"
-          />
-
-          <div class="project-content">
-            <div class="project-kicker">
-              <span>{{ project.category }}</span>
-              <span>{{ project.duration }}</span>
+        <div class="featured-projects">
+          <article
+            v-for="(project, index) in featuredProjects"
+            :key="project.slug"
+            class="project-preview"
+          >
+            <div class="project-number" aria-hidden="true">
+              {{ String(index + 1).padStart(2, "0") }}
             </div>
 
-            <div class="project-heading">
-              <h2>{{ project.title }}</h2>
-              <a
-                v-if="project.website"
-                :href="project.website"
-                target="_blank"
-                rel="noopener noreferrer"
-                :aria-label="`Visit ${project.title}`"
-              >
-                <v-icon icon="mdi-open-in-new" />
-              </a>
+            <div class="project-body">
+              <p class="project-category">{{ project.category }}</p>
+              <h3>{{ project.name }}</h3>
+              <p class="project-meta">
+                {{ project.role }} <span aria-hidden="true">·</span>
+                {{ project.dates }}
+              </p>
+              <p class="project-summary">{{ project.summary }}</p>
+
+              <ul class="project-highlights">
+                <li v-for="highlight in project.previewHighlights" :key="highlight">
+                  {{ highlight }}
+                </li>
+              </ul>
+
+              <ul class="technology-list" :aria-label="`${project.name} technologies`">
+                <li v-for="technology in project.technologies" :key="technology">
+                  {{ technology }}
+                </li>
+              </ul>
+
+              <div class="link-row project-links">
+                <NuxtLink :to="`/portfolio/${project.slug}`">
+                  Read the {{ project.name }} case study
+                </NuxtLink>
+                <a
+                  v-if="project.externalUrl"
+                  :href="project.externalUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ project.externalLabel }}
+                </a>
+              </div>
             </div>
+          </article>
+        </div>
+      </section>
 
-            <p class="project-role">{{ project.role }}</p>
-            <p class="project-description">{{ project.description }}</p>
+      <section class="page-section" aria-labelledby="strengths-title">
+        <div class="section-heading">
+          <p class="eyebrow">Engineering strengths</p>
+          <h2 id="strengths-title">Useful across the complete workflow</h2>
+          <p>
+            My strongest tools are PHP, Laravel, TypeScript, Node.js, Vue and
+            React, but the larger value is connecting product, backend,
+            frontend, data and delivery concerns.
+          </p>
+        </div>
 
-            <ul class="project-highlights">
-              <li v-for="highlight in project.highlights" :key="highlight">
+        <div class="strength-grid">
+          <article v-for="group in skillGroups" :key="group.name" class="strength-card">
+            <h3>{{ group.name }}</h3>
+            <ul>
+              <li v-for="skill in group.skills" :key="skill">{{ skill }}</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-section" aria-labelledby="additional-experience-title">
+        <div class="section-heading">
+          <p class="eyebrow">Additional experience</p>
+          <h2 id="additional-experience-title">Earlier product and platform work</h2>
+        </div>
+
+        <div class="experience-list">
+          <article
+            v-for="experience in additionalExperience"
+            :key="experience.company"
+            class="experience-entry"
+          >
+            <div class="experience-heading">
+              <div>
+                <h3>{{ experience.company }}</h3>
+                <p>{{ experience.role }}</p>
+              </div>
+              <p class="experience-dates">{{ experience.dates }}</p>
+            </div>
+            <p class="experience-description">{{ experience.description }}</p>
+            <ul>
+              <li v-for="highlight in experience.highlights" :key="highlight">
                 {{ highlight }}
               </li>
             </ul>
-          </div>
-        </article>
+          </article>
+        </div>
       </section>
 
-      <footer class="portfolio-footer">
-        <div>
-          <p class="footer-title">Available for senior full stack roles</p>
+      <section
+        v-if="certification"
+        class="page-section certification-section"
+        aria-labelledby="certification-title"
+      >
+        <div class="certification-copy">
+          <p class="eyebrow">Certification</p>
+          <h2 id="certification-title">
+            micro1 Senior Full-Stack Software Engineering Certification
+          </h2>
+          <p class="certification-meta">
+            {{ certification.date }} <span aria-hidden="true">·</span>
+            {{ certification.issuer }}
+          </p>
+          <p>{{ certification.details }}</p>
+          <ul class="technology-list" aria-label="Certification assessment areas">
+            <li v-for="topic in certification.topics" :key="topic">{{ topic }}</li>
+          </ul>
+        </div>
+
+        <picture class="certificate-frame">
+          <source
+            :srcset="withBaseUrl('images/certificates/micro1-certification.webp')"
+            type="image/webp"
+          >
+          <img
+            :src="withBaseUrl(certification.image)"
+            alt="micro1 Senior Full-Stack Software Engineering certificate awarded to Justice Abutu"
+            width="2040"
+            height="1440"
+            loading="lazy"
+          >
+        </picture>
+      </section>
+
+      <section class="page-section work-style-section" aria-labelledby="work-style-title">
+        <div class="section-heading">
+          <p class="eyebrow">How I work</p>
+          <h2 id="work-style-title">Ownership across product boundaries</h2>
           <p>
-            Focused on scalable product engineering, reliable APIs, and teams
-            that value strong execution.
+            I am comfortable joining an existing codebase, understanding the
+            surrounding business process and taking responsibility for changes
+            that cross several parts of the system. On smaller teams in
+            particular, feature quality depends on understanding how backend,
+            frontend, infrastructure and product decisions affect one another.
           </p>
         </div>
-        <v-btn color="#111827" variant="flat" rounded="0" :href="`mailto:${email}`">
-          Start a conversation
-        </v-btn>
-      </footer>
-    </v-container>
-  </div>
+
+        <ul class="principle-list">
+          <li v-for="principle in workPrinciples" :key="principle">
+            {{ principle }}
+          </li>
+        </ul>
+      </section>
+
+      <section class="contact-section" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <p class="eyebrow">Current focus</p>
+          <h2 id="contact-title">Ready to contribute to a serious production system</h2>
+          <p>
+            I am looking for a remote senior backend, full-stack or
+            product-engineering role. I am based in Abuja, Nigeria and can work
+            with distributed teams across African, European and North American
+            time zones.
+          </p>
+
+          <ul class="focus-list" aria-label="Industries and product areas of interest">
+            <li v-for="focus in currentFocus" :key="focus">{{ focus }}</li>
+          </ul>
+        </div>
+
+        <nav class="link-row contact-links" aria-label="Contact and profile links">
+          <a class="primary-link" :href="`mailto:${email}`">Start a conversation</a>
+          <a :href="resumeUrl">View my résumé</a>
+          <a :href="linkedinUrl" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a :href="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </section>
+    </div>
+  </main>
 </template>
 
 <style scoped>
+:global(*) {
+  box-sizing: border-box;
+}
+
 .portfolio-page {
   min-height: 100vh;
-  background: #f6f6f3;
-  color: #111827;
+  color: #172033;
+  background: #f7f8fa;
 }
 
 .portfolio-shell {
-  max-width: 1160px;
-  padding: 56px 24px;
+  width: min(100% - 48px, 1120px);
+  margin: 0 auto;
+  padding: 72px 0 56px;
 }
 
 .portfolio-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  align-items: end;
-  gap: 36px;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: center;
+  gap: clamp(40px, 7vw, 88px);
 }
 
-.hero-copy {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
+.eyebrow,
+.project-category {
+  margin: 0 0 12px;
+  color: #1d4ed8;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin-top: 0;
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(2.25rem, 6vw, 5rem);
+  margin-bottom: 12px;
+  color: #101827;
+  font-size: clamp(3rem, 8vw, 6.25rem);
   font-weight: 900;
-  line-height: 0.98;
-  letter-spacing: 0;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
 }
 
 .position {
-  margin-top: 14px;
-  color: #374151;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: 24px;
+  color: #27364d;
+  font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.25;
 }
 
-.hero-actions {
+.hero-statement {
+  max-width: 720px;
+  margin-bottom: 16px;
+  color: #1f2937;
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+  line-height: 1.45;
+}
+
+.hero-context,
+.section-heading > p:last-child,
+.contact-copy > p,
+.certification-copy > p {
+  max-width: 760px;
+  color: #4b5563;
+  font-size: 1.03rem;
+  line-height: 1.72;
+}
+
+.hero-context {
+  margin-bottom: 12px;
+}
+
+.availability {
+  margin-bottom: 28px;
+  color: #374151;
+  font-weight: 700;
+}
+
+.portrait-frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #d7dce3;
+  border-radius: 14px;
+  background: #e5e7eb;
+  box-shadow: 0 18px 48px rgba(23, 32, 51, 0.12);
+}
+
+.portrait-frame img,
+.certificate-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.link-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 10px;
+  align-items: center;
+  gap: 10px 22px;
 }
 
-.profile-image {
-  width: 220px;
-  height: 250px;
-  border: 1px solid rgba(17, 24, 39, 0.12);
-  border-radius: 8px;
-  background: #e5e7eb;
+.link-row a,
+.project-links a {
+  color: #174f89;
+  font-weight: 800;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
-.summary {
-  max-width: 860px;
-  margin: 38px 0 0;
+.link-row a:hover,
+.link-row a:focus-visible,
+.project-links a:hover,
+.project-links a:focus-visible {
+  color: #123b66;
+  text-decoration-thickness: 2px;
+}
+
+.primary-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 17px;
+  border: 2px solid #174f89;
+  border-radius: 6px;
+  color: #ffffff !important;
+  background: #174f89;
+  text-decoration: none !important;
+}
+
+.primary-link:hover,
+.primary-link:focus-visible {
+  color: #ffffff !important;
+  background: #123b66;
+  border-color: #123b66;
+}
+
+a:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 4px;
+}
+
+.proof-section {
+  margin-top: 64px;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-block: 1px solid #cfd6df;
+  list-style: none;
+}
+
+.proof-grid li {
+  padding: 22px;
+  color: #27364d;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.proof-grid li + li {
+  border-left: 1px solid #cfd6df;
+}
+
+.page-section {
+  padding-top: 92px;
+}
+
+.section-heading {
+  max-width: 820px;
+  margin-bottom: 36px;
+}
+
+.section-heading h2,
+.certification-copy h2,
+.contact-copy h2 {
+  margin-bottom: 14px;
+  color: #101827;
+  font-size: clamp(2rem, 4vw, 3.35rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.section-heading > p:last-child,
+.contact-copy > p,
+.certification-copy > p {
+  margin-bottom: 0;
+}
+
+.featured-projects {
+  border-top: 1px solid #cfd6df;
+}
+
+.project-preview {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 28px;
+  padding: 42px 0;
+  border-bottom: 1px solid #cfd6df;
+}
+
+.project-number {
+  color: #1d4ed8;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.project-category {
+  margin-bottom: 8px;
+}
+
+.project-body h3 {
+  margin-bottom: 8px;
+  color: #101827;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height: 1.1;
+}
+
+.project-meta {
+  margin-bottom: 20px;
+  color: #4b5563;
+  font-weight: 800;
+}
+
+.project-summary {
+  max-width: 820px;
+  margin-bottom: 22px;
   color: #374151;
   font-size: 1.08rem;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
-.skills-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 28px;
-}
-
-.skill-chip {
-  background: #ffffff;
-}
-
-.certification-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
-  align-items: center;
-  gap: 28px;
-  margin-top: 40px;
-  padding: 24px;
-  border: 1px solid rgba(17, 24, 39, 0.12);
-  border-radius: 8px;
-  background: #ffffff;
-}
-
-.certification-kicker {
-  margin: 0 0 10px;
-  color: #6b7280;
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.certification-copy h2 {
-  margin: 0;
-  font-size: clamp(1.45rem, 3vw, 2.15rem);
-  font-weight: 900;
-  line-height: 1.12;
-  letter-spacing: 0;
-}
-
-.certification-meta {
-  margin: 10px 0 0;
-  color: #374151;
-  font-weight: 800;
-}
-
-.certification-description {
-  margin: 14px 0 0;
-  color: #4b5563;
-  line-height: 1.65;
-}
-
-.certification-topics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.certification-image {
-  width: 100%;
-  aspect-ratio: 17 / 12;
-  border: 1px solid rgba(17, 24, 39, 0.12);
-  border-radius: 6px;
-  background: #111827;
-}
-
-.certification-image :deep(.v-img__img) {
-  object-fit: contain;
-}
-
-.section-divider {
-  margin: 42px 0;
-  border-color: rgba(17, 24, 39, 0.12);
-}
-
-.work-intro {
-  max-width: 720px;
+.project-highlights,
+.experience-entry > ul,
+.strength-card ul {
   margin-bottom: 24px;
-}
-
-.work-intro h2 {
-  margin: 0;
-  font-size: clamp(1.6rem, 3vw, 2.25rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-
-.work-intro p {
-  margin: 10px 0 0;
-  color: #4b5563;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.project-card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(17, 24, 39, 0.12);
-  border-radius: 8px;
-  background: #ffffff;
-}
-
-.project-accent {
-  height: 5px;
-}
-
-.project-image {
-  border-bottom: 1px solid rgba(17, 24, 39, 0.08);
-  background: #e5e7eb;
-}
-
-.project-content {
-  padding: 24px;
-}
-
-.project-kicker,
-.project-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.project-kicker {
-  color: #6b7280;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.project-heading {
-  margin-top: 12px;
-}
-
-.project-heading h2 {
-  margin: 0;
-  font-size: 1.45rem;
-  line-height: 1.2;
-}
-
-.project-heading a {
-  display: inline-flex;
-  color: #111827;
-  text-decoration: none;
-}
-
-.project-role {
-  margin: 8px 0 0;
-  color: #374151;
-  font-weight: 700;
-}
-
-.project-description {
-  margin: 14px 0 0;
-  color: #4b5563;
+  padding-left: 1.2rem;
+  color: #27364d;
   line-height: 1.65;
 }
 
 .project-highlights {
-  display: grid;
-  gap: 9px;
-  margin: 18px 0 0;
-  padding-left: 18px;
-  color: #1f2937;
-  line-height: 1.55;
+  max-width: 900px;
 }
 
-.portfolio-footer {
+.project-highlights li + li,
+.experience-entry li + li,
+.strength-card li + li {
+  margin-top: 8px;
+}
+
+.technology-list,
+.focus-list,
+.principle-list {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.technology-list li,
+.focus-list li,
+.principle-list li {
+  padding: 7px 10px;
+  border: 1px solid #c9d3e1;
+  border-radius: 4px;
+  color: #374151;
+  background: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.strength-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.strength-card {
+  padding: 28px;
+  border: 1px solid #d7dce3;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.strength-card h3 {
+  margin-bottom: 18px;
+  color: #101827;
+  font-size: 1.22rem;
+}
+
+.strength-card ul {
+  margin-bottom: 0;
+}
+
+.experience-list {
+  border-top: 1px solid #cfd6df;
+}
+
+.experience-entry {
+  padding: 32px 0;
+  border-bottom: 1px solid #cfd6df;
+}
+
+.experience-heading {
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  margin-top: 52px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(17, 24, 39, 0.12);
+}
+
+.experience-heading h3 {
+  margin-bottom: 4px;
+  color: #101827;
+  font-size: 1.3rem;
+}
+
+.experience-heading p,
+.experience-dates {
+  margin-bottom: 0;
   color: #4b5563;
+  font-weight: 700;
 }
 
-.portfolio-footer p {
-  margin: 0;
+.experience-dates {
+  flex: 0 0 auto;
 }
 
-.footer-title {
-  color: #111827;
-  font-size: 1.15rem;
+.experience-description {
+  max-width: 820px;
+  margin: 18px 0 12px;
+  color: #374151;
+  line-height: 1.65;
+}
+
+.experience-entry > ul {
+  margin-bottom: 0;
+}
+
+.certification-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+  align-items: center;
+  gap: 44px;
+}
+
+.certification-meta {
+  color: #374151 !important;
   font-weight: 800;
 }
 
+.certification-copy .technology-list {
+  margin-top: 22px;
+  margin-bottom: 0;
+}
+
+.certificate-frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #d7dce3;
+  border-radius: 8px;
+  background: #101827;
+}
+
+.work-style-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: 64px;
+}
+
+.work-style-section .section-heading {
+  margin-bottom: 0;
+}
+
+.principle-list {
+  align-content: flex-start;
+  margin: 0;
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 48px;
+  margin-top: 92px;
+  padding: 48px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #101827;
+}
+
+.contact-copy h2,
+.contact-copy > p {
+  color: #ffffff;
+}
+
+.contact-section .eyebrow {
+  color: #93c5fd;
+}
+
+.focus-list {
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.focus-list li {
+  color: #e5e7eb;
+  border-color: #43506a;
+  background: #172033;
+}
+
+.contact-links {
+  min-width: 190px;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.contact-links a:not(.primary-link) {
+  color: #bfdbfe;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 900px) {
+  .portfolio-shell {
+    padding-top: 48px;
+  }
+
+  .portfolio-hero {
+    grid-template-columns: minmax(0, 1fr) 210px;
+    align-items: start;
+    gap: 36px;
+  }
+
+  .proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proof-grid li + li {
+    border-left: 0;
+  }
+
+  .proof-grid li:nth-child(even) {
+    border-left: 1px solid #cfd6df;
+  }
+
+  .proof-grid li:nth-child(n + 3) {
+    border-top: 1px solid #cfd6df;
+  }
+
+  .certification-section,
+  .work-style-section,
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-frame {
+    max-width: 680px;
+  }
+
+  .contact-links {
+    min-width: 0;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-shell {
+    width: min(100% - 32px, 1120px);
+    padding-top: 32px;
+  }
+
   .portfolio-hero {
     grid-template-columns: 1fr;
   }
 
-  .hero-copy,
-  .portfolio-footer {
+  .portrait-frame {
+    order: -1;
+    width: 156px;
+  }
+
+  .hero-links,
+  .contact-links {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-links a,
+  .contact-links a {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .hero-links a:not(.primary-link),
+  .contact-links a:not(.primary-link) {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .proof-grid,
+  .strength-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-grid li:nth-child(even) {
+    border-left: 0;
+  }
+
+  .proof-grid li + li {
+    border-top: 1px solid #cfd6df;
+  }
+
+  .page-section {
+    padding-top: 72px;
+  }
+
+  .project-preview {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 34px 0;
+  }
+
+  .project-links {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .profile-image {
-    order: -1;
-    width: 176px;
-    height: 200px;
-  }
-
-  .hero-actions {
-    justify-content: flex-start;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .certification-section {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .portfolio-shell {
-    padding: 36px 16px;
-  }
-
-  .hero-actions {
-    width: 100%;
-  }
-
-  .hero-actions .v-btn,
-  .portfolio-footer .v-btn {
-    width: 100%;
-  }
-
-  .project-kicker,
-  .project-heading {
-    align-items: flex-start;
+  .experience-heading {
     flex-direction: column;
     gap: 8px;
   }
 
-  .project-content {
-    padding: 20px;
+  .certification-section {
+    gap: 28px;
   }
 
-  .certification-section {
-    padding: 20px;
+  .contact-section {
+    gap: 32px;
+    margin-inline: -16px;
+    padding: 36px 20px;
+    border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
   }
 }
 </style>
