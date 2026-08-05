@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import { useAtsHelpers } from "../composables/atsHelpers";
+import type { ResumeContent } from "../types/resume";
+
+const props = withDefaults(defineProps<{
+  content?: ResumeContent;
+  skillsHeading?: string;
+  projectsHeading?: string;
+}>(), {
+  skillsHeading: "Technical Skills",
+  projectsHeading: "Selected Independent Project",
+});
 
 const {
   summary,
@@ -18,7 +28,7 @@ const {
   linkedinUrl,
   githubUrl,
   managedCoUrl,
-} = useAtsHelpers();
+} = props.content ?? useAtsHelpers();
 </script>
 
 <template>
@@ -47,7 +57,7 @@ const {
     </section>
 
     <section aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Technical Skills</h2>
+      <h2 id="skills-heading">{{ skillsHeading }}</h2>
       <dl class="skill-list">
         <div v-for="category in skillCategories" :key="category.name">
           <dt>{{ category.name }}:</dt>
@@ -69,7 +79,7 @@ const {
           </h3>
           <p class="entry-meta">{{ experience.location }} <span aria-hidden="true">|</span> {{ experience.duration }}</p>
         </div>
-        <p class="entry-description">{{ experience.description }}</p>
+        <p v-if="experience.description" class="entry-description">{{ experience.description }}</p>
         <ul>
           <li v-for="task in experience.tasks" :key="task">{{ task }}</li>
         </ul>
@@ -77,7 +87,7 @@ const {
     </section>
 
     <section aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Selected Independent Project</h2>
+      <h2 id="projects-heading">{{ projectsHeading }}</h2>
       <article v-for="project in independentProjectList" :key="project.name" class="entry project-entry">
         <div class="entry-heading">
           <h3>

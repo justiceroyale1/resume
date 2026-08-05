@@ -45,6 +45,8 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: [
+        '/backend',
+        '/fullstack',
         '/portfolio/managedco',
         '/portfolio/amanamarket',
         '/portfolio/kadmap',

@@ -1,6 +1,6 @@
 # Justice Abutu - Senior Backend / Full-Stack Engineer Résumé
 
-This Nuxt application contains my ATS-friendly résumé and portfolio. The canonical résumé is available at both `/` and `/resume`; `/portfolio` contains selected work.
+This Nuxt application contains my ATS-friendly résumés and portfolio. The master résumé is available at `/`, the backend-focused résumé is available at `/backend`, the full-stack/product-focused résumé is available at `/fullstack`, and `/portfolio` contains selected work.
 
 ## Local Development
 
@@ -10,7 +10,7 @@ npm run dev
 
 ## PDF Export
 
-Open either résumé route in Chrome and choose **Print → Save as PDF**. Select colour mode, use A4 paper and the default scale, disable browser headers and footers, and enable background graphics. The print stylesheet is designed for a two-page, selectable-text PDF with the résumé's accent colours preserved.
+Open `/`, `/backend`, or `/fullstack` in Chrome and choose **Print → Save as PDF**. Select colour mode, use A4 paper and the default scale, disable browser headers and footers, and enable background graphics. The print stylesheet produces selectable-text PDFs with the résumé's accent colours preserved.
 
 ## Build & Deploy
 

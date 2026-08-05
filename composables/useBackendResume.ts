@@ -1,0 +1,227 @@
+import type { ResumeContent } from "../types/resume";
+
+const backendResume: ResumeContent = {
+  name: "Justice Abutu",
+  position: "Senior Backend Engineer | PHP, Laravel, Node.js",
+  address: "Abuja, Nigeria",
+  availability: "Open to remote employment and international contract roles",
+  email: "justiceroyale1@gmail.com",
+  phoneNumber: "+234 813 054 6010",
+  phoneHref: "+2348130546010",
+  linkedinUrl: "https://www.linkedin.com/in/justice-abutu-royale/",
+  githubUrl: "https://github.com/justiceroyale1",
+  managedCoUrl: "https://managedcohq.com/",
+  summary:
+    "Senior backend engineer with seven years of experience building and maintaining web platforms used for commerce, finance, property management, education, and business operations. My strongest work is in PHP, Laravel, TypeScript, Node.js, relational databases, REST APIs, background processing, and production troubleshooting. I have designed payment, verification, credit, order, escrow, audit, and multi-tenant workflows, and I am comfortable taking backend features from technical design through testing, deployment, and production support. I have worked remotely with teams in Nigeria, Kenya, the United Kingdom, and the United States.",
+  skillCategories: [
+    {
+      name: "Backend Engineering",
+      skills: [
+        "PHP",
+        "Laravel",
+        "Node.js",
+        "TypeScript",
+        "JavaScript",
+        "REST APIs",
+        "Eloquent ORM",
+        "authentication",
+        "role-based access control",
+        "webhooks",
+        "payment integrations",
+        "background jobs",
+        "queues",
+      ],
+    },
+    {
+      name: "Databases and Caching",
+      skills: [
+        "MySQL",
+        "MariaDB",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "transactions",
+        "indexing",
+        "query optimisation",
+        "data modelling",
+      ],
+    },
+    {
+      name: "Architecture and Reliability",
+      skills: [
+        "Modular monoliths",
+        "microservices",
+        "multi-tenant applications",
+        "event-driven workflows",
+        "audit logging",
+        "idempotent processing",
+        "authorization",
+        "performance profiling",
+      ],
+    },
+    {
+      name: "Testing and Delivery",
+      skills: [
+        "PHPUnit",
+        "unit testing",
+        "feature testing",
+        "integration testing",
+        "static analysis",
+        "code review",
+        "Docker",
+        "Docker Compose",
+        "GitHub Actions",
+        "Jenkins",
+        "CircleCI",
+        "Nginx",
+        "Laravel Horizon",
+        "Supervisor",
+      ],
+    },
+    {
+      name: "Cloud and Hosting",
+      skills: ["AWS EC2", "AWS S3", "Railway", "Cloudflare", "Heroku"],
+    },
+    {
+      name: "Frontend Working Knowledge",
+      skills: [
+        "Vue.js",
+        "Vue 3",
+        "Nuxt.js",
+        "React",
+        "Pinia",
+        "Tailwind CSS",
+        "shadcn-vue",
+        "Blade",
+        "Vite",
+      ],
+    },
+  ],
+  experienceList: [
+    {
+      company: "Coamana",
+      position: "Senior Full-Stack Engineer",
+      location: "Abuja, Nigeria",
+      website: "https://www.coamana.com/",
+      duration: "November 2024 – June 2026",
+      description:
+        "Worked on AmanaMarket, a multi-country platform that supported commerce, finance, verification, payments, logistics, and market administration.",
+      tasks: [
+        "Contributed 1,396 commits across the Laravel backend, APIs, database layer, Vue.js frontend, tests, and deployment tooling between December 2024 and May 2026.",
+        "Improved finance and order-processing workflows and built reporting, transaction-filtering, and trend-analysis APIs, contributing to a reported 40% reduction in order-processing time.",
+        "Built verification and KYC flows for wholesalers, suppliers, retailers, market leaders, and enterprise users across country-specific identity requirements.",
+        "Delivered repayment, dispute, commission, credit-limit, audit-log, and transaction-statistics workflows with authorization rules, validation, database transactions, and backend tests.",
+        "Expanded payment and commerce capabilities across Nigeria and Kenya through M-Pesa, Paystack, VBank, wallets, pay-on-delivery, and inter-market trading.",
+        "Built backend workflows for market administration, member management, fees, invitations, suspensions, logistics providers, vehicles, routes, order coordination, and payouts.",
+        "Added query logging and authorization safeguards, refactored high-risk areas, and helped stabilise CI.",
+        "Wrote a parallel-test script that reduced test-suite time by 68% on Apple Silicon and 83.3% on Intel machines.",
+      ],
+    },
+    {
+      company: "KadMap",
+      position: "Senior Full-Stack Developer",
+      location: "Abuja, Nigeria",
+      website: "https://www.kadmap.com/",
+      duration: "August 2024 – November 2025",
+      description:
+        "Worked on an offline-first cloud-computing platform that allowed organisations to run on-premise infrastructure with central administration.",
+      tasks: [
+        "Built the Authentication and Directory services responsible for user identity and access to organisations, workspaces, and resources.",
+        "Designed secure device onboarding around administrator-generated configuration, device identity, organisation identity, workspace permissions, and centrally issued authentication tokens.",
+        "Contributed to an architecture in which local KadMap Data Machines communicated with central services for activation, restoration, licensing, and organisational data management.",
+        "Built subscription, add-on, instalment-payment, support-ticket, and installation-management features for KadMap Connect.",
+        "Integrated the React application with authentication and licensing services through Convex while preserving clear service boundaries.",
+      ],
+    },
+    {
+      company: "New Avenue",
+      position: "Full-Stack Developer",
+      employmentType: "Contract",
+      location: "New York, United States",
+      website: "https://www.newavenuehomes.com/",
+      duration: "November 2023 – February 2024",
+      tasks: [
+        "Redesigned and optimised invoicing workflows for a housing-operations platform, reducing processing errors by a reported 35%.",
+        "Fixed issues in an automated scheduling system, improving resource allocation by a reported 50%.",
+        "Built a budgeting module with real-time reporting and integrated third-party payment and email-campaign services.",
+        "Worked remotely with a distributed team and contributed within the company’s in-house framework.",
+      ],
+    },
+    {
+      company: "XRadar360",
+      position: "Full-Stack Developer",
+      location: "Leicester, United Kingdom",
+      duration: "January 2021 – September 2023",
+      description:
+        "Joined as a backend developer and later took responsibility for both backend and frontend development in a legacy construction platform.",
+      tasks: [
+        "Built project and work-package workflows for one-time and recurring construction tasks with independent budgets.",
+        "Developed expert onboarding, verification, notifications, competitive bidding, quotations, contract awards, and negotiation workflows.",
+        "Implemented multi-currency escrow that held funds until work was completed, inspected, and approved.",
+        "Built progress reporting with geo-tagged media, along with complaint, dispute, and reconciliation workflows.",
+        "Used Heroku to simplify deployment and maintenance during the platform’s early stages.",
+      ],
+    },
+    {
+      company: "Truelandlord",
+      position: "Full-Stack Developer",
+      employmentType: "Contract",
+      location: "Abuja, Nigeria",
+      website: "https://truelandlord.com/",
+      duration: "March 2022 – October 2022",
+      tasks: [
+        "Built contract-management workflows with digital signatures, multi-factor authentication, and identity verification.",
+        "Developed property search and recommendation features and optimised database queries, reducing response time by a reported 60%.",
+        "Implemented backend and frontend workflows for property owners, managers, and prospective tenants.",
+      ],
+    },
+    {
+      company: "SchoolShell",
+      position: "Full-Stack Developer",
+      location: "Abuja, Nigeria",
+      website: "https://schoolshell.com/",
+      duration: "April 2019 – August 2020",
+      tasks: [
+        "Built inventory-management and reporting workflows for the Federal Judicial Service Commission.",
+        "Developed student-admission, document-verification, and automated report-card features for education-management products.",
+        "Improved application performance and built notification workflows connecting schools, teachers, and parents.",
+      ],
+    },
+  ],
+  independentProjectList: [
+    {
+      name: "ManagedCo",
+      role: "Founder and Lead Engineer",
+      duration: "2026 – Present",
+      website: "https://managedcohq.com/",
+      description:
+        "Multi-tenant operations software for small businesses managing orders, stock, customers, follow-up, and online storefronts.",
+      tasks: [
+        "Designed the product architecture and built the Laravel backend, Vue-based interface, deployment pipeline, and production environment.",
+        "Implemented tenant-aware authentication, permissions, order processing, inventory, customer records, storefronts, and reporting.",
+        "Set up Redis-backed queues, separate application and worker services, S3-compatible storage, automated CI/CD, and environment-specific deployments.",
+        "Diagnosed and resolved production issues involving session cookies, queue workers, Redis, DNS, runtime configuration, and cross-origin requests.",
+        "Used direct conversations with small businesses to validate operational requirements before and during development.",
+      ],
+    },
+  ],
+  educationList: [
+    {
+      title: "Bachelor of Science in Computer Science",
+      institution: "Federal University of Lafia",
+      location: "Nasarawa, Nigeria",
+      duration: "2013 – 2017",
+    },
+  ],
+  certificationList: [
+    {
+      title: "Senior Full-Stack Software Engineering Certification",
+      issuer: "micro1",
+      date: "July 2026",
+      details:
+        "Assessment areas included core PHP, backend development, APIs, web architecture, databases, performance, scalability, and production engineering.",
+    },
+  ],
+};
+
+export const useBackendResume = () => backendResume;
