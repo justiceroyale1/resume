@@ -192,7 +192,7 @@ const backendResume: ResumeContent = {
     {
       name: "ManagedCo",
       role: "Founder and Lead Engineer",
-      duration: "2026 – Present",
+      duration: "January 2026 - Present",
       website: "https://managedcohq.com/",
       description:
         "Multi-tenant operations software for small businesses managing orders, stock, customers, follow-up, and online storefronts.",

@@ -161,7 +161,7 @@ const independentProjectList = [
     {
         name: 'ManagedCo',
         role: 'Founder and Lead Engineer',
-        duration: '2026 – Present',
+        duration: 'January 2026 - Present',
         website: managedCoUrl,
         description: 'A multi-tenant operations platform that helps small businesses manage orders, inventory, customers, follow-up, and online storefronts from one system.',
         tasks: [
