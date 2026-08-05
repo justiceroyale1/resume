@@ -60,7 +60,7 @@ const featuredProjects: PortfolioProject[] = [
     name: "ManagedCo",
     category: "Multi-tenant business operations platform",
     role: "Founder and Lead Engineer",
-    dates: "2026 to present",
+    dates: "January 2026 to present",
     summary:
       "ManagedCo helps small businesses manage orders, inventory, customers, follow-up and online storefronts without relying on disconnected spreadsheets, notebooks and messaging apps.",
     problem:
