@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "lato",
+        "createdAt": "2026-10-14T21:24:44.453Z",
+        "reason": "Agent: Lato predates this edit and the detector's overused-font description does not list Lato; retained to match the existing portfolio typography"
+      }
+    ]
+  }
+}

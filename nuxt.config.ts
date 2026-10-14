@@ -49,6 +49,7 @@ export default defineNuxtConfig({
         '/fullstack',
         '/portfolio/managedco',
         '/portfolio/amanamarket',
+        '/portfolio/fjsc-inventory',
         '/portfolio/kadmap',
         '/portfolio/xradar360',
       ],

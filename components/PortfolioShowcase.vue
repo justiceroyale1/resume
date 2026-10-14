@@ -19,7 +19,6 @@ const {
   skillGroups,
   additionalExperience,
   workPrinciples,
-  currentFocus,
 } = usePortfolioContent();
 
 const certification = certificationList[0];
@@ -36,44 +35,45 @@ const withBaseUrl = (path: string) => {
     <div class="portfolio-shell">
       <header class="portfolio-hero">
         <div class="hero-copy">
-          <p class="eyebrow">Senior product engineering</p>
           <h1>{{ name }}</h1>
           <p class="position">Senior Backend and Full-Stack Software Engineer</p>
           <p class="hero-statement">
             I build reliable web platforms for businesses with complex
             operational, financial and marketplace workflows.
           </p>
-          <p class="hero-context">
-            Seven years of experience across backend engineering, frontend
-            development, APIs, databases, testing, deployment and production
-            support.
-          </p>
           <p class="availability">
             {{ address }} <span aria-hidden="true">·</span> {{ availability }}
           </p>
 
           <nav class="link-row hero-links" aria-label="Primary links">
-            <a class="primary-link" :href="resumeUrl">View my résumé</a>
-            <a :href="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a :href="linkedinUrl" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="primary-link" href="#selected-work-title">Explore selected work</a>
+            <a :href="resumeUrl">View my résumé</a>
             <a :href="`mailto:${email}`">Email me</a>
           </nav>
         </div>
 
-        <picture class="portrait-frame">
-          <source
-            :srcset="withBaseUrl('images/headshot.webp')"
-            type="image/webp"
-          >
-          <img
-            :src="withBaseUrl('images/headshot.jpg')"
-            :alt="`${name}, senior backend and full-stack software engineer`"
-            width="1122"
-            height="1402"
-            loading="eager"
-            fetchpriority="high"
-          >
-        </picture>
+        <aside class="featured-system" aria-labelledby="featured-system-title">
+          <div class="system-heading">
+            <span class="system-label">Featured project</span>
+            <h2 id="featured-system-title">ManagedCo</h2>
+            <p>One system for the operational work behind a small business.</p>
+          </div>
+          <div class="system-map" role="img" aria-label="ManagedCo system map: storefronts and business operations connect to a tenant-aware Laravel application, with MySQL data, Redis-backed workers, and S3-compatible storage.">
+            <div class="system-inputs">
+              <span>Storefronts</span>
+              <span>Business operations</span>
+            </div>
+            <div class="system-connector" aria-hidden="true"></div>
+            <div class="system-core">Tenant-aware Laravel application</div>
+            <div class="system-connector" aria-hidden="true"></div>
+            <div class="system-services">
+              <span>MySQL data</span>
+              <span>Redis + workers</span>
+              <span>S3 storage</span>
+            </div>
+          </div>
+          <NuxtLink class="system-link" to="/portfolio/managedco">See the ManagedCo case study</NuxtLink>
+        </aside>
       </header>
 
       <section class="proof-section" aria-labelledby="proof-title">
@@ -85,24 +85,16 @@ const withBaseUrl = (path: string) => {
 
       <section class="page-section" aria-labelledby="selected-work-title">
         <div class="section-heading">
-          <p class="eyebrow">Selected work</p>
-          <h2 id="selected-work-title">Systems, workflows and engineering decisions</h2>
-          <p>
-            Four projects that show current ownership, work in complex domains
-            and experience improving products with real operational constraints.
-          </p>
+          <h2 id="selected-work-title">Selected work</h2>
+          <p>Systems, workflows and engineering decisions across four complex products.</p>
         </div>
 
         <div class="featured-projects">
           <article
-            v-for="(project, index) in featuredProjects"
+            v-for="project in featuredProjects"
             :key="project.slug"
             class="project-preview"
           >
-            <div class="project-number" aria-hidden="true">
-              {{ String(index + 1).padStart(2, "0") }}
-            </div>
-
             <div class="project-body">
               <p class="project-category">{{ project.category }}</p>
               <h3>{{ project.name }}</h3>
@@ -112,17 +104,7 @@ const withBaseUrl = (path: string) => {
               </p>
               <p class="project-summary">{{ project.summary }}</p>
 
-              <ul class="project-highlights">
-                <li v-for="highlight in project.previewHighlights" :key="highlight">
-                  {{ highlight }}
-                </li>
-              </ul>
-
-              <ul class="technology-list" :aria-label="`${project.name} technologies`">
-                <li v-for="technology in project.technologies" :key="technology">
-                  {{ technology }}
-                </li>
-              </ul>
+              <p class="project-highlight">{{ project.previewHighlight }}</p>
 
               <div class="link-row project-links">
                 <NuxtLink :to="`/portfolio/${project.slug}`">
@@ -144,7 +126,6 @@ const withBaseUrl = (path: string) => {
 
       <section class="page-section" aria-labelledby="strengths-title">
         <div class="section-heading">
-          <p class="eyebrow">Engineering strengths</p>
           <h2 id="strengths-title">Useful across the complete workflow</h2>
           <p>
             My strongest tools are PHP, Laravel, TypeScript, Node.js, Vue and
@@ -157,7 +138,7 @@ const withBaseUrl = (path: string) => {
           <article v-for="group in skillGroups" :key="group.name" class="strength-card">
             <h3>{{ group.name }}</h3>
             <ul>
-              <li v-for="skill in group.skills" :key="skill">{{ skill }}</li>
+              <li v-for="skill in group.skills.slice(0, 4)" :key="skill">{{ skill }}</li>
             </ul>
           </article>
         </div>
@@ -165,7 +146,6 @@ const withBaseUrl = (path: string) => {
 
       <section class="page-section" aria-labelledby="additional-experience-title">
         <div class="section-heading">
-          <p class="eyebrow">Additional experience</p>
           <h2 id="additional-experience-title">Earlier product and platform work</h2>
         </div>
 
@@ -183,11 +163,6 @@ const withBaseUrl = (path: string) => {
               <p class="experience-dates">{{ experience.dates }}</p>
             </div>
             <p class="experience-description">{{ experience.description }}</p>
-            <ul>
-              <li v-for="highlight in experience.highlights" :key="highlight">
-                {{ highlight }}
-              </li>
-            </ul>
           </article>
         </div>
       </section>
@@ -198,7 +173,6 @@ const withBaseUrl = (path: string) => {
         aria-labelledby="certification-title"
       >
         <div class="certification-copy">
-          <p class="eyebrow">Certification</p>
           <h2 id="certification-title">
             micro1 Senior Full-Stack Software Engineering Certification
           </h2>
@@ -229,7 +203,6 @@ const withBaseUrl = (path: string) => {
 
       <section class="page-section work-style-section" aria-labelledby="work-style-title">
         <div class="section-heading">
-          <p class="eyebrow">How I work</p>
           <h2 id="work-style-title">Ownership across product boundaries</h2>
           <p>
             I am comfortable joining an existing codebase, understanding the
@@ -241,7 +214,7 @@ const withBaseUrl = (path: string) => {
         </div>
 
         <ul class="principle-list">
-          <li v-for="principle in workPrinciples" :key="principle">
+          <li v-for="principle in workPrinciples.slice(0, 4)" :key="principle">
             {{ principle }}
           </li>
         </ul>
@@ -249,7 +222,10 @@ const withBaseUrl = (path: string) => {
 
       <section class="contact-section" aria-labelledby="contact-title">
         <div class="contact-copy">
-          <p class="eyebrow">Current focus</p>
+          <picture class="contact-portrait">
+            <source :srcset="withBaseUrl('images/headshot.webp')" type="image/webp">
+            <img :src="withBaseUrl('images/headshot.jpg')" :alt="`${name}, senior backend and full-stack software engineer`" width="1122" height="1402" loading="lazy">
+          </picture>
           <h2 id="contact-title">Ready to contribute to a serious production system</h2>
           <p>
             I am looking for a remote senior backend, full-stack or
@@ -258,9 +234,6 @@ const withBaseUrl = (path: string) => {
             time zones.
           </p>
 
-          <ul class="focus-list" aria-label="Industries and product areas of interest">
-            <li v-for="focus in currentFocus" :key="focus">{{ focus }}</li>
-          </ul>
         </div>
 
         <nav class="link-row contact-links" aria-label="Contact and profile links">
@@ -285,20 +258,24 @@ const withBaseUrl = (path: string) => {
   background: #f7f8fa;
 }
 
+.portfolio-page ::selection {
+  color: #fff;
+  background: #174f89;
+}
+
 .portfolio-shell {
   width: min(100% - 48px, 1120px);
   margin: 0 auto;
-  padding: 72px 0 56px;
+  padding: 64px 0 56px;
 }
 
 .portfolio-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 0.78fr);
   align-items: center;
-  gap: clamp(40px, 7vw, 88px);
+  gap: clamp(36px, 5vw, 72px);
 }
 
-.eyebrow,
 .project-category {
   margin: 0 0 12px;
   color: #1d4ed8;
@@ -319,10 +296,10 @@ ul {
 h1 {
   margin-bottom: 12px;
   color: #101827;
-  font-size: clamp(3rem, 8vw, 6.25rem);
+  font-size: clamp(3rem, 7vw, 5.8rem);
   font-weight: 900;
   line-height: 0.92;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.04em;
 }
 
 .position {
@@ -341,7 +318,6 @@ h1 {
   line-height: 1.45;
 }
 
-.hero-context,
 .section-heading > p:last-child,
 .contact-copy > p,
 .certification-copy > p {
@@ -351,30 +327,189 @@ h1 {
   line-height: 1.72;
 }
 
-.hero-context {
-  margin-bottom: 12px;
-}
-
 .availability {
   margin-bottom: 28px;
   color: #374151;
   font-weight: 700;
 }
 
-.portrait-frame {
-  display: block;
-  overflow: hidden;
-  border: 1px solid #d7dce3;
-  border-radius: 14px;
-  background: #e5e7eb;
-  box-shadow: 0 18px 48px rgba(23, 32, 51, 0.12);
-}
-
-.portrait-frame img,
+.contact-portrait img,
 .certificate-frame img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.featured-system {
+  padding: 28px;
+  border-radius: 14px;
+  color: #e5edfc;
+  background: #101827;
+  box-shadow: 0 20px 48px rgba(23, 32, 51, 0.16);
+}
+
+.system-label {
+  color: #93c5fd;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.system-heading h2 {
+  margin: 12px 0 8px;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.system-heading p {
+  margin-bottom: 24px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.system-map {
+  padding: 20px;
+  border: 1px solid #40506c;
+  border-radius: 10px;
+  background: #18243a;
+}
+
+.system-inputs,
+.system-services {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.system-inputs {
+  padding-bottom: 16px;
+}
+
+.system-services {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-top: 16px;
+}
+
+.system-inputs::before,
+.system-services::before {
+  position: absolute;
+  right: 16.666%;
+  left: 16.666%;
+  height: 2px;
+  background: #93c5fd;
+  content: "";
+}
+
+.system-inputs::before {
+  bottom: 8px;
+  right: 25%;
+  left: 25%;
+}
+
+.system-services::before {
+  top: 8px;
+}
+
+.system-inputs::after,
+.system-services::after {
+  position: absolute;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 8px;
+  background: #93c5fd;
+  content: "";
+}
+
+.system-inputs::after {
+  bottom: 0;
+}
+
+.system-services::after {
+  top: 0;
+}
+
+.system-inputs span,
+.system-services span,
+.system-core {
+  position: relative;
+  display: grid;
+  min-height: 50px;
+  place-items: center;
+  padding: 9px;
+  border: 1px solid #53657f;
+  border-radius: 6px;
+  color: #eef5ff;
+  font-size: 0.81rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.system-inputs span::after,
+.system-services span::before {
+  position: absolute;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 8px;
+  background: #93c5fd;
+  content: "";
+}
+
+.system-inputs span::after {
+  bottom: -9px;
+}
+
+.system-services span::before {
+  top: -9px;
+}
+
+.system-core {
+  min-height: 58px;
+  border-color: #93c5fd;
+  color: #fff;
+  background: #174f89;
+  font-size: 0.93rem;
+}
+
+.system-connector {
+  position: relative;
+  width: 2px;
+  height: 22px;
+  margin: 0 auto;
+  background: #93c5fd;
+}
+
+.system-connector::after {
+  position: absolute;
+  bottom: -1px;
+  left: -4px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid #93c5fd;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: "";
+}
+
+.system-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #bfdbfe;
+  font-weight: 800;
+  text-underline-offset: 4px;
+}
+
+.system-link:hover,
+.system-link:focus-visible {
+  color: #fff;
+}
+
+#selected-work-title {
+  scroll-margin-top: 32px;
 }
 
 .link-row {
@@ -481,18 +616,8 @@ a:focus-visible {
 }
 
 .project-preview {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  gap: 28px;
-  padding: 42px 0;
+  padding: 36px 0;
   border-bottom: 1px solid #cfd6df;
-}
-
-.project-number {
-  color: #1d4ed8;
-  font-size: 0.9rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
 }
 
 .project-category {
@@ -514,14 +639,12 @@ a:focus-visible {
 
 .project-summary {
   max-width: 820px;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
   color: #374151;
   font-size: 1.08rem;
   line-height: 1.7;
 }
 
-.project-highlights,
-.experience-entry > ul,
 .strength-card ul {
   margin-bottom: 24px;
   padding-left: 1.2rem;
@@ -529,18 +652,19 @@ a:focus-visible {
   line-height: 1.65;
 }
 
-.project-highlights {
-  max-width: 900px;
-}
-
-.project-highlights li + li,
-.experience-entry li + li,
 .strength-card li + li {
   margin-top: 8px;
 }
 
+.project-highlight {
+  max-width: 820px;
+  margin-bottom: 18px;
+  color: #27364d;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
 .technology-list,
-.focus-list,
 .principle-list {
   display: flex;
   flex-wrap: wrap;
@@ -551,7 +675,6 @@ a:focus-visible {
 }
 
 .technology-list li,
-.focus-list li,
 .principle-list li {
   padding: 7px 10px;
   border: 1px solid #c9d3e1;
@@ -626,9 +749,6 @@ a:focus-visible {
   line-height: 1.65;
 }
 
-.experience-entry > ul {
-  margin-bottom: 0;
-}
 
 .certification-section {
   display: grid;
@@ -687,19 +807,12 @@ a:focus-visible {
   color: #ffffff;
 }
 
-.contact-section .eyebrow {
-  color: #93c5fd;
-}
-
-.focus-list {
-  margin-top: 24px;
-  margin-bottom: 0;
-}
-
-.focus-list li {
-  color: #e5e7eb;
-  border-color: #43506a;
-  background: #172033;
+.contact-portrait {
+  display: block;
+  overflow: hidden;
+  width: 80px;
+  margin-bottom: 22px;
+  border-radius: 8px;
 }
 
 .contact-links {
@@ -730,9 +843,13 @@ a:focus-visible {
   }
 
   .portfolio-hero {
-    grid-template-columns: minmax(0, 1fr) 210px;
+    grid-template-columns: 1fr;
     align-items: start;
-    gap: 36px;
+    gap: 32px;
+  }
+
+  .featured-system {
+    max-width: 560px;
   }
 
   .proof-grid {
@@ -778,15 +895,24 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .portrait-frame {
-    order: -1;
-    width: 156px;
+  .featured-system {
+    padding: 20px;
   }
 
   .hero-links,
   .contact-links {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .hero-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 16px;
+  }
+
+  .hero-links .primary-link {
+    grid-column: 1 / -1;
   }
 
   .hero-links a,
@@ -819,9 +945,7 @@ a:focus-visible {
   }
 
   .project-preview {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 34px 0;
+    padding: 30px 0;
   }
 
   .project-links {
