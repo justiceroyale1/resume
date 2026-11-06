@@ -191,7 +191,7 @@ const backendResume: ResumeContent = {
   independentProjectList: [
     {
       name: "ManagedCo",
-      role: "Founder and Lead Engineer",
+      role: "Fullstack Software Engineer",
       duration: "January 2026 - Present",
       website: "https://managedcohq.com/",
       description:

@@ -75,9 +75,11 @@ const {
               {{ experience.company }}
             </a>
             <span v-else>{{ experience.company }}</span>
-            <span class="separator" aria-hidden="true"> | </span>{{ experience.position }}<template v-if="experience.employmentType">, {{ experience.employmentType }}</template>
+            <span class="separator" aria-hidden="true"> | </span>{{ experience.position }}<template
+              v-if="experience.employmentType">, {{ experience.employmentType }}</template>
           </h3>
-          <p class="entry-meta">{{ experience.location }} <span aria-hidden="true">|</span> {{ experience.duration }}</p>
+          <p class="entry-meta">{{ experience.location }} <span aria-hidden="true">|</span> {{ experience.duration }}
+          </p>
         </div>
         <p v-if="experience.description" class="entry-description">{{ experience.description }}</p>
         <ul>
@@ -107,7 +109,9 @@ const {
       <h2 id="education-heading">Education</h2>
       <article v-for="education in educationList" :key="education.title" class="credential">
         <h3>{{ education.title }}</h3>
-        <p>{{ education.institution }}, {{ education.location }} <span aria-hidden="true">|</span> {{ education.duration }}</p>
+        <p>{{ education.institution }}, {{ education.location }} <span aria-hidden="true">|</span> {{ education.duration
+        }}
+        </p>
       </article>
     </section>
 
@@ -207,7 +211,7 @@ h2 {
   text-align: left;
 }
 
-.skill-list > div {
+.skill-list>div {
   display: flex;
   gap: 5px;
   margin-top: 2px;
@@ -267,11 +271,11 @@ li {
   display: inline;
 }
 
-.credential h3 + p {
+.credential h3+p {
   padding-inline-start: 0.4em;
 }
 
-.credential p + p::before {
+.credential p+p::before {
   content: " — ";
 }
 
@@ -307,7 +311,7 @@ li {
     white-space: normal;
   }
 
-  .skill-list > div {
+  .skill-list>div {
     display: block;
     margin-top: 5px;
   }
@@ -380,7 +384,7 @@ li {
     font-size: 11.5pt;
   }
 
-  .skill-list > div {
+  .skill-list>div {
     margin-top: 0.5pt;
   }
 
@@ -414,9 +418,9 @@ li {
     page-break-after: avoid;
   }
 
-  .entry-heading + .entry-description,
-  .entry-heading + ul,
-  .entry-description + ul li:first-child {
+  .entry-heading+.entry-description,
+  .entry-heading+ul,
+  .entry-description+ul li:first-child {
     break-before: avoid;
     page-break-before: avoid;
   }
