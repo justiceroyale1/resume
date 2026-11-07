@@ -75,8 +75,8 @@ const allProjects: PortfolioProject[] = [
     slug: "managedco",
     name: "ManagedCo",
     category: "Multi-tenant business operations platform",
-    role: "Founder and Lead Engineer",
-    dates: "January 2026 - Present",
+    role: "Lead Software Engineer",
+    dates: "June 2026 - November 2026",
     summary:
       "ManagedCo connects the customer action, the staff record and the owner’s view. The owner still makes the decisions; the product provides a dependable place to check what happened.",
     problem:
@@ -238,7 +238,7 @@ const allProjects: PortfolioProject[] = [
     role: "Full-Stack Developer at SchoolShell",
     dates: "2019 - 2020",
     summary:
-      "An intranet inventory system for the Federal Judicial Service Commission that preserved purchase-batch costs, department allocations and asset disposals in the store’s books.",
+      "An enterprise management information system for the Federal Judicial Service Commission that reduced operational overhead.",
     problem:
       "The store needed to account for inventory bought at different prices, items issued to departments, disposed assets and report totals without rebuilding the same records by hand for accounts and auditors.",
     previewHighlight:
@@ -490,30 +490,30 @@ const additionalExperience: AdditionalExperience[] = [
       "Collaborated across the United States and Nigeria using the organisation's in-house frameworks and libraries.",
     ],
   },
-  {
-    company: "Truelandlord",
-    role: "Full-Stack Developer, Contract",
-    dates: "March 2022 to October 2022",
-    description:
-      "Worked on property-management and housing workflows for property owners, managers and prospective tenants.",
-    highlights: [
-      "Built contract-management and digital-signature workflows.",
-      "Implemented multi-factor authentication and identity verification.",
-      "Contributed to property search and recommendation features.",
-    ],
-  },
-  {
-    company: "SchoolShell",
-    role: "Full-Stack Developer",
-    dates: "April 2019 to August 2020",
-    description:
-      "Built education-management products and an inventory-management system during the early stage of my engineering career.",
-    highlights: [
-      "Delivered student admission, document verification and report-card generation.",
-      "Built inventory reporting for the Federal Judicial Service Commission.",
-      "Worked on notifications and backend, frontend and database performance.",
-    ],
-  },
+  // {
+  //   company: "Truelandlord",
+  //   role: "Full-Stack Developer, Contract",
+  //   dates: "March 2022 to October 2022",
+  //   description:
+  //     "Worked on property-management and housing workflows for property owners, managers and prospective tenants.",
+  //   highlights: [
+  //     "Built contract-management and digital-signature workflows.",
+  //     "Implemented multi-factor authentication and identity verification.",
+  //     "Contributed to property search and recommendation features.",
+  //   ],
+  // },
+  // {
+  //   company: "SchoolShell",
+  //   role: "Full-Stack Developer",
+  //   dates: "April 2019 to August 2020",
+  //   description:
+  //     "Built education-management products and an inventory-management system during the early stage of my engineering career.",
+  //   highlights: [
+  //     "Delivered student admission, document verification and report-card generation.",
+  //     "Built inventory reporting for the Federal Judicial Service Commission.",
+  //     "Worked on notifications and backend, frontend and database performance.",
+  //   ],
+  // },
 ];
 
 const workPrinciples = [

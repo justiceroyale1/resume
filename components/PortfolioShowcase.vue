@@ -58,7 +58,8 @@ const withBaseUrl = (path: string) => {
             <h2 id="featured-system-title">ManagedCo</h2>
             <p>One system for the operational work behind a small business.</p>
           </div>
-          <div class="system-map" role="img" aria-label="ManagedCo system map: storefronts and business operations connect to a tenant-aware Laravel application, with MySQL data, Redis-backed workers, and S3-compatible storage.">
+          <div class="system-map" role="img"
+            aria-label="ManagedCo system map: storefronts and business operations connect to a tenant-aware Laravel application, with MySQL data, Redis-backed workers, and S3-compatible storage.">
             <div class="system-inputs">
               <span>Storefronts</span>
               <span>Business operations</span>
@@ -90,11 +91,7 @@ const withBaseUrl = (path: string) => {
         </div>
 
         <div class="featured-projects">
-          <article
-            v-for="project in featuredProjects"
-            :key="project.slug"
-            class="project-preview"
-          >
+          <article v-for="project in featuredProjects" :key="project.slug" class="project-preview">
             <div class="project-body">
               <p class="project-category">{{ project.category }}</p>
               <h3>{{ project.name }}</h3>
@@ -110,12 +107,7 @@ const withBaseUrl = (path: string) => {
                 <NuxtLink :to="`/portfolio/${project.slug}`">
                   Read the {{ project.name }} case study
                 </NuxtLink>
-                <a
-                  v-if="project.externalUrl"
-                  :href="project.externalUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a v-if="project.externalUrl" :href="project.externalUrl" target="_blank" rel="noopener noreferrer">
                   {{ project.externalLabel }}
                 </a>
               </div>
@@ -146,15 +138,11 @@ const withBaseUrl = (path: string) => {
 
       <section class="page-section" aria-labelledby="additional-experience-title">
         <div class="section-heading">
-          <h2 id="additional-experience-title">Earlier product and platform work</h2>
+          <h2 id="additional-experience-title">Additional product and platform work</h2>
         </div>
 
         <div class="experience-list">
-          <article
-            v-for="experience in additionalExperience"
-            :key="experience.company"
-            class="experience-entry"
-          >
+          <article v-for="experience in additionalExperience" :key="experience.company" class="experience-entry">
             <div class="experience-heading">
               <div>
                 <h3>{{ experience.company }}</h3>
@@ -167,11 +155,7 @@ const withBaseUrl = (path: string) => {
         </div>
       </section>
 
-      <section
-        v-if="certification"
-        class="page-section certification-section"
-        aria-labelledby="certification-title"
-      >
+      <section v-if="certification" class="page-section certification-section" aria-labelledby="certification-title">
         <div class="certification-copy">
           <h2 id="certification-title">
             micro1 Senior Full-Stack Software Engineering Certification
@@ -187,17 +171,10 @@ const withBaseUrl = (path: string) => {
         </div>
 
         <picture class="certificate-frame">
-          <source
-            :srcset="withBaseUrl('images/certificates/micro1-certification.webp')"
-            type="image/webp"
-          >
-          <img
-            :src="withBaseUrl(certification.image)"
-            alt="micro1 Senior Full-Stack Software Engineering certificate awarded to Justice Abutu"
-            width="2040"
-            height="1440"
-            loading="lazy"
-          >
+          <source :srcset="withBaseUrl('images/certificates/micro1-certification.webp')" type="image/webp">
+          <img :src="withBaseUrl(certification.image)"
+            alt="micro1 Senior Full-Stack Software Engineering certificate awarded to Justice Abutu" width="2040"
+            height="1440" loading="lazy">
         </picture>
       </section>
 
@@ -224,7 +201,9 @@ const withBaseUrl = (path: string) => {
         <div class="contact-copy">
           <picture class="contact-portrait">
             <source :srcset="withBaseUrl('images/headshot.webp')" type="image/webp">
-            <img :src="withBaseUrl('images/headshot.jpg')" :alt="`${name}, senior backend and full-stack software engineer`" width="1122" height="1402" loading="lazy">
+            <img :src="withBaseUrl('images/headshot.jpg')"
+              :alt="`${name}, senior backend and full-stack software engineer`" width="1122" height="1402"
+              loading="lazy">
           </picture>
           <h2 id="contact-title">Ready to contribute to a serious production system</h2>
           <p>
@@ -318,9 +297,9 @@ h1 {
   line-height: 1.45;
 }
 
-.section-heading > p:last-child,
-.contact-copy > p,
-.certification-copy > p {
+.section-heading>p:last-child,
+.contact-copy>p,
+.certification-copy>p {
   max-width: 760px;
   color: #4b5563;
   font-size: 1.03rem;
@@ -581,7 +560,7 @@ a:focus-visible {
   line-height: 1.45;
 }
 
-.proof-grid li + li {
+.proof-grid li+li {
   border-left: 1px solid #cfd6df;
 }
 
@@ -605,9 +584,9 @@ a:focus-visible {
   letter-spacing: -0.035em;
 }
 
-.section-heading > p:last-child,
-.contact-copy > p,
-.certification-copy > p {
+.section-heading>p:last-child,
+.contact-copy>p,
+.certification-copy>p {
   margin-bottom: 0;
 }
 
@@ -652,7 +631,7 @@ a:focus-visible {
   line-height: 1.65;
 }
 
-.strength-card li + li {
+.strength-card li+li {
   margin-top: 8px;
 }
 
@@ -803,7 +782,7 @@ a:focus-visible {
 }
 
 .contact-copy h2,
-.contact-copy > p {
+.contact-copy>p {
   color: #ffffff;
 }
 
@@ -856,7 +835,7 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .proof-grid li + li {
+  .proof-grid li+li {
     border-left: 0;
   }
 
@@ -936,7 +915,7 @@ a:focus-visible {
     border-left: 0;
   }
 
-  .proof-grid li + li {
+  .proof-grid li+li {
     border-top: 1px solid #cfd6df;
   }
 
@@ -971,6 +950,7 @@ a:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "Justice Abutu - Senior Backend / Full-Stack Software Engineer",
-  ogTitle: "Justice Abutu - Senior Backend / Full-Stack Software Engineer",
+  title: "Justice Abutu - Senior Software Engineer",
+  ogTitle: "Justice Abutu - Senior Software Engineer",
   description:
-    "Justice Abutu is a senior backend and full-stack software engineer with seven years of experience building business-critical platforms with PHP, Laravel, TypeScript, Node.js, Vue, and React.",
+    "Justice Abutu is a senior software engineer with experience building enterprise web applications with PHP, Laravel, TypeScript, Node.js, Vue, and React.",
   ogDescription:
-    "Justice Abutu is a senior backend and full-stack software engineer with seven years of experience building business-critical platforms with PHP, Laravel, TypeScript, Node.js, Vue, and React.",
+    "Justice Abutu is a senior software engineer with experience building enterprise web applications with PHP, Laravel, TypeScript, Node.js, Vue, and React.",
   ogImage: "images/headshot.jpg",
   twitterCard: "summary_large_image",
 });
@@ -30,6 +30,7 @@ body {
 }
 
 @media print {
+
   html,
   body,
   #__nuxt {

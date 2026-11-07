@@ -48,10 +48,8 @@ export interface ResumeContent {
   position: string;
   skillCategories: ResumeSkillCategory[];
   educationList: ResumeEducation[];
-  certificationList: ResumeCertification[];
   experienceList: ResumeExperience[];
-  independentProjectList: ResumeProject[];
   linkedinUrl: string;
   githubUrl: string;
-  managedCoUrl: string;
+  portfolioUrl: string;
 }

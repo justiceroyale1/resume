@@ -2,14 +2,9 @@
 import { useAtsHelpers } from "../composables/atsHelpers";
 import type { ResumeContent } from "../types/resume";
 
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   content?: ResumeContent;
-  skillsHeading?: string;
-  projectsHeading?: string;
-}>(), {
-  skillsHeading: "Technical Skills",
-  projectsHeading: "Selected Independent Project",
-});
+}>();
 
 const {
   summary,
@@ -22,12 +17,10 @@ const {
   position,
   skillCategories,
   educationList,
-  certificationList,
   experienceList,
-  independentProjectList,
   linkedinUrl,
   githubUrl,
-  managedCoUrl,
+  portfolioUrl,
 } = props.content ?? useAtsHelpers();
 </script>
 
@@ -47,17 +40,25 @@ const {
         <span aria-hidden="true">|</span>
         <a :href="githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
         <span aria-hidden="true">|</span>
-        <a :href="managedCoUrl" target="_blank" rel="noopener noreferrer">ManagedCo</a>
+        <a :href="portfolioUrl" target="_blank" rel="noopener noreferrer">Portfolio</a>
       </address>
     </header>
 
     <section aria-labelledby="summary-heading">
-      <h2 id="summary-heading">Professional Summary</h2>
+      <h2 id="summary-heading">Summary</h2>
       <p class="summary">{{ summary }}</p>
     </section>
 
+    <section aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      <article v-for="education in educationList" :key="education.title" class="credential">
+        <h3>{{ education.title }}</h3>
+        <p>{{ education.institution }}, {{ education.location }}</p>
+      </article>
+    </section>
+
     <section aria-labelledby="skills-heading">
-      <h2 id="skills-heading">{{ skillsHeading }}</h2>
+      <h2 id="skills-heading">Skills</h2>
       <dl class="skill-list">
         <div v-for="category in skillCategories" :key="category.name">
           <dt>{{ category.name }}:</dt>
@@ -81,46 +82,10 @@ const {
           <p class="entry-meta">{{ experience.location }} <span aria-hidden="true">|</span> {{ experience.duration }}
           </p>
         </div>
-        <p v-if="experience.description" class="entry-description">{{ experience.description }}</p>
+        <!-- <p v-if="experience.description" class="entry-description">{{ experience.description }}</p> -->
         <ul>
           <li v-for="task in experience.tasks" :key="task">{{ task }}</li>
         </ul>
-      </article>
-    </section>
-
-    <section aria-labelledby="projects-heading">
-      <h2 id="projects-heading">{{ projectsHeading }}</h2>
-      <article v-for="project in independentProjectList" :key="project.name" class="entry project-entry">
-        <div class="entry-heading">
-          <h3>
-            <a :href="project.website" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
-            <span class="separator" aria-hidden="true"> | </span>{{ project.role }}
-          </h3>
-          <p class="entry-meta">{{ project.duration }}</p>
-        </div>
-        <p class="entry-description">{{ project.description }}</p>
-        <ul>
-          <li v-for="task in project.tasks" :key="task">{{ task }}</li>
-        </ul>
-      </article>
-    </section>
-
-    <section aria-labelledby="education-heading">
-      <h2 id="education-heading">Education</h2>
-      <article v-for="education in educationList" :key="education.title" class="credential">
-        <h3>{{ education.title }}</h3>
-        <p>{{ education.institution }}, {{ education.location }} <span aria-hidden="true">|</span> {{ education.duration
-        }}
-        </p>
-      </article>
-    </section>
-
-    <section aria-labelledby="certification-heading">
-      <h2 id="certification-heading">Certification</h2>
-      <article v-for="certification in certificationList" :key="certification.title" class="credential">
-        <h3>{{ certification.title }}</h3>
-        <p>{{ certification.issuer }} <span aria-hidden="true">|</span> {{ certification.date }}</p>
-        <p>{{ certification.details }}</p>
       </article>
     </section>
   </main>

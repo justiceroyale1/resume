@@ -1,27 +1,24 @@
 <script setup lang="ts">
-import { useFullstackResume } from "../composables/useFullstackResume";
 import { portfolioSiteUrl } from "../composables/usePortfolioContent";
-
-const fullstackResume = useFullstackResume();
+import { useFullstackResume } from "../composables/useFullstackResume";
+import { ref } from "vue";
 
 useSeoMeta({
   title: "Justice Abutu - Senior Full-Stack / Product Engineer",
   ogTitle: "Justice Abutu - Senior Full-Stack / Product Engineer",
   description:
-    "Justice Abutu is a senior full-stack and product-focused software engineer with seven years of experience building web products with Laravel, PHP, TypeScript, Node.js, Vue.js, and React.",
+    "Justice Abutu is a senior full-stack and product-focused software engineer with experience building web products with Laravel, PHP, TypeScript, Node.js, Vue.js, and React.",
   ogDescription:
-    "Justice Abutu is a senior full-stack and product-focused software engineer with seven years of experience building web products with Laravel, PHP, TypeScript, Node.js, Vue.js, and React.",
+    "Justice Abutu is a senior full-stack and product-focused software engineer with experience building web products with Laravel, PHP, TypeScript, Node.js, Vue.js, and React.",
   ogImage: `${portfolioSiteUrl}/images/headshot.jpg`,
   twitterCard: "summary_large_image",
 });
+
+const fullstackContent = ref(useFullstackResume());
 </script>
 
 <template>
-  <AtsResume
-    :content="fullstackResume"
-    skills-heading="Core Skills"
-    projects-heading="Selected Product"
-  />
+  <AtsResume :content="fullstackContent" />
 </template>
 
 <style>
@@ -41,6 +38,7 @@ body {
 }
 
 @media print {
+
   html,
   body,
   #__nuxt {

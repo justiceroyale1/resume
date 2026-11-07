@@ -1,38 +1,35 @@
 const summary =
-    'Senior backend and full-stack software engineer with seven years of experience building, scaling, and maintaining business-critical web platforms. Strong background in PHP, Laravel, TypeScript, Node.js, Vue.js, and React, with hands-on experience designing REST APIs, improving database performance, implementing background jobs, and building payment, verification, and complex operational workflows. Comfortable owning features from technical design through production support and collaborating remotely across the globe, having previously worked with distributed teams in Nigeria, Kenya, the United Kingdom, and the United States.'
+    'Senior software engineer with experience building, maintaining, and optimizing enterprise web applications. Hands-on experience designing REST APIs, improving database performance, implementing background jobs, and building payment, verification, and complex operational workflows. Comfortable owning features from technical design through production support and collaborating remotely across the globe, having previously worked with distributed teams in Nigeria, Kenya, the United Kingdom, and the United States.'
 
 const phoneNumber = '+234 813 054 6010'
 const phoneHref = '+2348130546010'
 const address = 'Abuja, Nigeria'
-const availability = 'Open to remote employment and international contract roles'
+const availability = 'Open to all contract types'
 const email = 'justiceroyale1@gmail.com'
-const position = 'Senior Backend / Full-Stack Software Engineer'
+const position = 'Senior Software Engineer'
 const name = 'Justice Abutu'
 const linkedinUrl = 'https://www.linkedin.com/in/justice-abutu-royale/'
 const githubUrl = 'https://github.com/justiceroyale1'
 const managedCoUrl = 'https://managedcohq.com/'
 const resumeUrl = 'https://justiceroyale1.github.io/resume/'
+const portfolioUrl = 'https://justiceroyale1.github.io/resume/portfolio'
 
 const skillCategories = [
     {
         name: 'Backend',
-        skills: ['PHP', 'Laravel', 'Node.js', 'TypeScript', 'JavaScript', 'REST APIs', 'Eloquent ORM', 'authentication', 'role-based access control', 'background jobs', 'queues', 'webhooks', 'payment integrations'],
+        skills: ['PHP', 'Laravel', 'Node.js', 'TypeScript', 'JavaScript', 'Adonis.js'],
     },
     {
         name: 'Frontend',
-        skills: ['Vue.js', 'Vue 3', 'Nuxt.js', 'React', 'Pinia', 'Tailwind CSS', 'shadcn-vue', 'Bootstrap', 'Vuetify', 'Blade', 'Vite'],
+        skills: ['Vue.js', 'Nuxt.js', 'React', 'Pinia', 'Tailwind CSS', 'Shadcn-vue', 'Bootstrap CSS', 'Vuetify', 'Blade', 'Vite', 'Inertia.js'],
     },
     {
         name: 'Databases and Caching',
-        skills: ['MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB', 'Redis', 'database transactions', 'indexing', 'query optimisation'],
+        skills: ['MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB', 'Redis'],
     },
     {
         name: 'Infrastructure and Delivery',
-        skills: ['Docker', 'Docker Compose', 'GitHub Actions', 'Jenkins', 'CircleCI', 'Nginx', 'AWS EC2', 'AWS S3', 'Railway', 'Cloudflare', 'CI/CD', 'Laravel Horizon', 'Supervisor'],
-    },
-    {
-        name: 'Testing, Quality, and Architecture',
-        skills: ['PHPUnit', 'Cypress', 'unit testing', 'feature testing', 'integration testing', 'static analysis', 'code review', 'performance profiling', 'modular monoliths', 'microservices', 'multi-tenant applications', 'event-driven workflows', 'audit logging'],
+        skills: ['Docker', 'Docker Compose', 'GitHub Actions', 'Nginx', 'AWS S3', 'Railway', 'Hostinger'],
     },
 ]
 
@@ -44,7 +41,7 @@ const educationList = [
         institution: 'Federal University of Lafia',
         location: 'Nasarawa, Nigeria',
         duration: '2013 – 2017',
-        subtitle: 'Federal University of Lafia, Nasarawa, Nigeria | 2013 – 2017',
+        subtitle: 'Federal University of Lafia, Nasarawa, Nigeria',
     },
 ]
 
@@ -64,36 +61,18 @@ const experienceList = [
     {
         position: 'Senior Full-Stack Engineer',
         company: 'Coamana',
-        location: 'Abuja, Nigeria',
+        location: 'Abuja, Nigeria & Nairobi, Kenya',
         website: 'https://www.coamana.com/',
         duration: 'November 2024 – June 2026',
         current: false,
         description: 'Worked on AmanaMarket, a multi-country platform providing market traders with commerce, finance, verification, payment, logistics, and market-management tools.',
         tasks: [
-            'Made 1,396 commits across the Laravel backend, Vue.js frontend, APIs, database layer, automated tests, and deployment tooling between December 2024 and May 2026.',
             'Improved finance and order-processing performance and built reporting, transaction-filtering, and trend-analysis APIs, contributing to a reported 40% reduction in order-processing time.',
-            'Built verification and KYC workflows for wholesalers, suppliers, retailers, market leaders, and enterprise users across country-specific identity requirements.',
-            'Delivered repayment, dispute, commission, credit-limit, audit-log, and transaction-statistics workflows with permissions, validation, transactions, and backend tests.',
-            'Expanded payment and commerce capabilities across Nigeria and Kenya through M-Pesa, Paystack, VBank, wallets, pay-on-delivery, and inter-market trading.',
-            'Built enterprise-administration and logistics features for markets, members, fees, invitations, suspensions, providers, vehicles, routes, order coordination, and payouts.',
-            'Created reusable Vue 3 and shadcn-vue components for dashboards, forms, modals, comboboxes, tooltips, and market switching.',
+            // 'Delivered repayment, dispute, commission, credit-limit, audit-log, and transaction-statistics workflows with permissions, validation, transactions, and backend tests. This cut down administrative tasks and processing time in half.',
+            'Built verification and KYC workflows for wholesalers, suppliers, retailers, market leaders, and enterprise users across country-specific identity requirements rasing complaince for new users from 33% to 100%.',
+            'Expanded payment and commerce capabilities across Nigeria and Kenya through M-Pesa, Paystack, VBank, wallets, pay-on-delivery, and inter-market trading. This doubled the channels for revenue on the platform.',
+            'Created reusable Vue 3 and shadcn-vue components for dashboards, forms, modals, comboboxes, tooltips, and market switching halving the development time for UI components.',
             'Improved reliability through query logging, authorization safeguards, refactoring, CI stabilisation, and a parallel-test script that cut suite time by 68% on Apple Silicon and 83.3% on Intel machines.',
-        ],
-    },
-    {
-        position: 'Senior Full-Stack Developer',
-        company: 'KadMap',
-        location: 'Abuja, Nigeria',
-        website: 'https://www.kadmap.com/',
-        duration: 'August 2024 – November 2025',
-        current: false,
-        description: 'Worked on an offline-first cloud-computing platform that enabled organisations to operate on-premise infrastructure while retaining cloud-style administration.',
-        tasks: [
-            'Built the Authentication and Directory services responsible for user authentication and access to organisations, workspaces, and resources.',
-            'Designed secure device onboarding using administrator-generated configuration, device and organisation identity, workspace permissions, and centrally issued authentication tokens.',
-            'Contributed to an architecture in which local KadMap Data Machines communicated with central services for activation, restoration, licensing, and organisational data management.',
-            'Built KadMap Connect features for configuring installations, managing subscriptions and add-ons, tracking instalment payments, and creating support tickets.',
-            'Integrated the React application with authentication and licensing services through Convex while maintaining clear service ownership boundaries.',
         ],
     },
     {
@@ -118,27 +97,12 @@ const experienceList = [
         website: '',
         duration: 'January 2021 – September 2023',
         current: false,
-        description: 'Joined as a backend developer and later assumed responsibility for backend and frontend development in a legacy construction platform.',
+        description: 'Took over a stalled legacy codebase. Built it into a full-fledged construction platform.',
         tasks: [
-            'Built project and work-package workflows for one-time or recurring construction tasks with independent budgets.',
-            'Developed expert onboarding, verification, notifications, competitive bidding, quotations, contract awards, and negotiation workflows.',
-            'Implemented multi-currency escrow that held funds until work was completed, inspected, and approved.',
-            'Built progress reporting with geo-tagged media plus complaint, dispute, and reconciliation workflows, and used Heroku to simplify early-stage deployment and maintenance.',
-        ],
-    },
-    {
-        position: 'Full-Stack Developer',
-        employmentType: 'Contract',
-        company: 'Truelandlord',
-        location: 'Abuja, Nigeria',
-        website: 'https://truelandlord.com/',
-        duration: 'March 2022 – October 2022',
-        current: false,
-        description: 'Built property-management workflows for property owners, managers, and prospective tenants.',
-        tasks: [
-            'Built contract-management workflows with digital signatures, multi-factor authentication, and identity verification.',
-            'Developed property search and recommendations and optimised queries, reducing response time by a reported 60%.',
-            'Implemented responsive interfaces for property owners, managers, and prospective tenants.',
+            'Took over a legacy project that had stalled for a year. Optimized the backend and removed redundant code which led to a completion of the MVP in 6 months.',
+            'Developed expert onboarding, verification, notifications, competitive bidding, quotations, contract awards, and negotiation workflows. This reduced the time to verification from over 2 months to about a week.',
+            'Implemented multi-currency escrow that held funds until work was completed, inspected, and approved. This saved users about 80% in sunken construction costs.',
+            'Built progress reporting with geo-tagged media plus complaint, dispute, and reconciliation workflows, so users saved on transportation costs by monitoring their projects remotely.',
         ],
     },
     {
@@ -148,27 +112,10 @@ const experienceList = [
         website: 'https://schoolshell.com/',
         duration: 'April 2019 – August 2020',
         current: false,
-        description: 'Contributed across backend, frontend, and database development during the early stage of my software engineering career.',
+        description: 'Built an enterprise management information system for a government agency. Also contrubuted to the flagship product (SchoolShell).',
         tasks: [
-            'Built inventory-management and reporting workflows for the Federal Judicial Service Commission.',
-            'Developed student-admission, document-verification, and automated report-card functionality for education-management products.',
-            'Improved application performance and built notifications connecting schools, teachers, and parents.',
-        ],
-    },
-]
-
-const independentProjectList = [
-    {
-        name: 'ManagedCo',
-        role: 'Full-stack Software Engineer',
-        duration: 'January 2026 - Present',
-        website: managedCoUrl,
-        description: 'A multi-tenant operations platform that helps small businesses manage orders, inventory, customers, follow-up, and online storefronts from one system.',
-        tasks: [
-            'Designed and built the product from discovery and architecture through backend, frontend, deployment, and production support.',
-            'Implemented tenant-aware authentication, permissions, order workflows, stock management, customer records, storefronts, and reporting.',
-            'Built Laravel queue processing with Redis, separate application and worker services, S3-compatible storage, automated CI/CD, and environment-specific deployment.',
-            'Resolved production issues involving session cookies, workers, Redis, DNS, runtime configuration, and cross-origin requests while validating operational needs with small businesses.',
+            'Built an enterprise management information system for the Federal Judicial Service Commission. Cut operational overhead from several days to 3 minutes.',
+            'Developed student-admission, document-verification, and automated report-card functionality for education-management products. This led to a minimum time and cost savings of 30% for the schools and parents.',
         ],
     },
 ]
@@ -188,10 +135,10 @@ export const useAtsHelpers = () => {
         educationList,
         certificationList,
         experienceList,
-        independentProjectList,
         linkedinUrl,
         githubUrl,
         managedCoUrl,
         resumeUrl,
+        portfolioUrl
     }
 }

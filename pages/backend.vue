@@ -1,27 +1,25 @@
 <script setup lang="ts">
-import { useBackendResume } from "../composables/useBackendResume";
 import { portfolioSiteUrl } from "../composables/usePortfolioContent";
+import { useBackendResume } from "../composables/useBackendResume";
+import { ref } from "vue";
 
-const backendResume = useBackendResume();
 
 useSeoMeta({
   title: "Justice Abutu - Senior Backend Engineer | PHP, Laravel, Node.js",
   ogTitle: "Justice Abutu - Senior Backend Engineer | PHP, Laravel, Node.js",
   description:
-    "Justice Abutu is a senior backend engineer with seven years of experience building production platforms with PHP, Laravel, TypeScript, Node.js, relational databases, REST APIs, and background processing.",
+    "Justice Abutu is a senior backend engineer with experience building production platforms with PHP, Laravel, TypeScript, Node.js, relational databases, REST APIs, and background processing.",
   ogDescription:
-    "Justice Abutu is a senior backend engineer with seven years of experience building production platforms with PHP, Laravel, TypeScript, Node.js, relational databases, REST APIs, and background processing.",
+    "Justice Abutu is a senior backend engineer with experience building production platforms with PHP, Laravel, TypeScript, Node.js, relational databases, REST APIs, and background processing.",
   ogImage: `${portfolioSiteUrl}/images/headshot.jpg`,
   twitterCard: "summary_large_image",
 });
+
+const backendContent = ref(useBackendResume());
 </script>
 
 <template>
-  <AtsResume
-    :content="backendResume"
-    skills-heading="Core Skills"
-    projects-heading="Selected Project"
-  />
+  <AtsResume :content="backendContent" />
 </template>
 
 <style>
@@ -41,6 +39,7 @@ body {
 }
 
 @media print {
+
   html,
   body,
   #__nuxt {
